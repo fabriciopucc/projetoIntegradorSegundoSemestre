@@ -1,0 +1,177 @@
+/*Arquivo específico para estilização de todos elementos criados com várias tagas HTML que se repetirâo pelo site, por exemplo: a menuBar, que será utilizada em mais de uma página*/
+
+/*Cabecalho*/
+.cabecalho{
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.margemCabecalho{
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.iconCabecalho{
+  cursor: pointer;
+  width: 30px;
+}
+
+.links{
+}
+
+.links a{
+  margin-left: 20px;
+}
+
+/*MebuBar*/
+.menu{
+  display: none;
+}
+
+.sobreposicaoMenuBar{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.33);
+  top: 0;
+  left: -100%;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.menu:checked~.sobreposicaoMenuBar{
+    left: 0;
+}
+
+.menuBar{
+  width: 20%;
+  height: 100%;
+  position: fixed;
+  left: -20%;
+  background-color: var(--primaria);
+  top: 0;
+  transition: 0.5s;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: left;
+}
+
+.menu:checked~.menuBar{
+  left: 0;
+}
+
+.margemMenuBar{
+  width: 90%;
+  margin: 30px 0;
+}
+
+.margemMenuBar h1{
+  color: #fff;
+  margin: 0;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: none;
+}
+
+.opcoes{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.opcaoMenuBar{
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.opcaoMenuBar:hover{
+  background-color: #355bcb;;
+}
+
+.iconOpcaoMenuBar{
+  width: 25px;
+  height: 25px;
+  margin: 0 10px;
+}
+
+.opcaoMenuBar p{
+  color: #fff;
+  margin: 0 10px;
+  font-size: 15px;
+}
+
+/*Container*/
+.container{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.margemContainer{
+  width: 90%;
+  min-height: calc(100vh - 60px);
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
+
+.centralizar{
+  align-items: center;
+}
+
+.linkBotao{
+  width: 150px;
+  height: 40px;
+  font-size: 15px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  color: #fff;
+  background-color: var(--primaria);
+  cursor: pointer;
+}
+
+.linkBotao:hover{
+  filter: brightness(80%);
+}
+
+/*Rodape*/
+.rodape{
+  width: 100%;
+  height: 200px;
+  background-color: var(--primaria);
+}
+
+/*Responsividade*/
+@media screen and (max-width: 1000px) {
+  .menuBar{
+    width: 50%;
+    left: -50%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .menuBar{
+    width: 75%;
+    left: -75%;
+  }
+
+  form{
+      width: 100%;
+  }
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cadastro do aluno</title>
+
+    <link rel="stylesheet" href="../../../assets/css/padroesGerais.css">
+    <link rel="stylesheet" href="../../../assets/css/templates.css">
+    <link rel="stylesheet" href="./cadastroAluno.css">
+
+    <script src="../../../js/geral/messageBox.js"></script>
+    <script src="../../../js/geral/carregarTemplates.js"></script>
+    <script src="../../../js/geral/validacoesDeFormularios.js"></script>
+    <script src="../../../js/geral/utils.js"></script>
+    <script src="../../../js/aluno/aluno.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous" defer>
+    </script>
+  </head>
+
+  <body>
+    <div id="carregarMessageBox"></div>
+
+    <header class="cabecalho">
+      <div class="margemCabecalho">
+        <a href="../paginaDoAluno/paginaDoAluno.html">
+          <img 
+            src="../../../assets/icons/reply.png" 
+            class="iconCabecalho"
+            alt="Menu"
+          >
+        </a>
+
+        <h1>Cadastro do aluno</h1>
+
+        <p></p>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="margemContainer centralizar">
+        <form
+          id="formularioCadastrarAluno"
+        >
+          <label for="">RA</label>
+          <input 
+            type="number"
+            placeholder="Digite o RA do aluno"
+            id="ra"  
+          >
+
+          <label for="">Nome</label>
+          <input 
+            type="text"
+            placeholder="Digite o nome do aluno"   
+            id="nome" 
+          >
+
+          <label for="">CPF</label>
+          <input 
+            type="number"
+            placeholder="Digite o CPF do aluno"  
+            id="cpf"  
+          >
+
+          <label for="">Celular</label>
+          <input 
+            type="number"
+            placeholder="Digite o celular do aluno"   
+            id="celular"
+          >
+
+          <button
+          type="button"
+          onclick="enviarFormularioCadastrarAluno()"
+          >
+            Cadastrar
+          </button>
+        </form>
+      </div>  
+    </main>
+
+    <footer class="rodape"></footer>
+  </body>
+</html>

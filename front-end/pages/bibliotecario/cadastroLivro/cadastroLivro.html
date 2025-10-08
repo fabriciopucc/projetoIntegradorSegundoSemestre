@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cadastro de livro</title>
+
+    <link rel="stylesheet" href="../../../assets/css/padroesGerais.css">
+    <link rel="stylesheet" href="../../../assets/css/templates.css">
+
+    <script src="../../../js/geral/carregarTemplates.js"></script>
+    <script src="../../../js/geral/messageBox.js"></script>
+    <script src="../../../js//geral/validacoesDeFormularios.js"></script>
+    <script src="../../../js/geral/utils.js"></script>
+    <script src="../../../js/bibliotecario/livro.js"></script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous" defer>
+    </script>
+  </head>
+
+  <body>
+    <div id="carregarMessageBox"></div>
+
+    <header class="cabecalho">
+      <div class="margemCabecalho">
+        <a href="../paginaDoBibliotecario/pagindaDoBibliotecario.html">
+          <img 
+            src="../../../assets/icons/reply.png" 
+            class="iconCabecalho"
+            alt="Menu"
+          >
+        </a>
+
+        <h1>Cadastro de livro</h1>
+
+        <p></p>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="margemContainer centralizar">
+        <form
+          id="formularioCadastrarLivro"
+        >
+          <label for="">Nome</label>
+          <input 
+            type="text"
+            placeholder="Digite o nome do livro"
+            id="nome"
+          >
+
+          <button
+            type="button"
+            onclick="enviarFormularioCadastrarLivro()"
+          >
+            Cadastrar
+          </button>
+        </form>
+      </div>  
+    </main>
+
+    <footer class="rodape"></footer>
+  </body>
+</html>

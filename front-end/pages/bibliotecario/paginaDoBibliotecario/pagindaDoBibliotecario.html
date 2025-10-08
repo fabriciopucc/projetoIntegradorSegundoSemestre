@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Página do bibliotecário</title>
+
+    <link rel="stylesheet" href="../../../assets/css/padroesGerais.css">
+    <link rel="stylesheet" href="../../../assets/css/templates.css">
+    <link rel="stylesheet" href="./paginaDoBibliotecario.css">
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous" defer>
+    </script>
+  </head>
+
+  <body>
+    <input type="checkbox" class="menu" id="menu">
+    <label class="sobreposicaoMenuBar" for="menu">
+    </label>
+
+    <nav class="menuBar">
+      <div class="margemMenuBar">
+        <h1>Página do bibliotecário</h1>
+        <div class="opcoes">
+          <a class="opcaoMenuBar" href="../cadastroLivro/cadastroLivro.html">
+            <img 
+              src="../../../assets/icons/cadastroLivro.png" 
+              alt="icon aluno"
+              class="iconOpcaoMenuBar"    
+            >
+            <p>Cadastro de livro</p>
+          </a>
+
+          <a class="opcaoMenuBar" href="../gestaoDeLivros/gestaoDeLivros.html">
+            <img 
+              src="../../../assets/icons/livros.png" 
+              alt="icon livros"
+              class="iconOpcaoMenuBar"    
+            >
+            <p>Gestão de livros</p>
+          </a>
+
+          <a class="opcaoMenuBar" href="../rankingDeLeitores/rankingDeLeitores.html">
+            <img 
+              src="../../../assets/icons/ranking.png" 
+              alt="icon livros"
+              class="iconOpcaoMenuBar"    
+            >
+            <p>Ranking de alunos</p>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="cabecalho">
+      <div class="margemCabecalho">
+        <label for="menu">
+          <img 
+            src="../../../assets/icons/menu.png" 
+            class="iconCabecalho"
+            alt="Menu"
+          >
+        </label>
+
+        <h1>Página do bibliotecário</h1>
+
+        <p></p>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="margemContainer">
+        <div class="containerOpcoes">
+          <a class="opcao" href="../cadastroLivro/cadastroLivro.html">
+            <div class="margemOpcao">
+              <h1>Cadastro de livro</h1>
+              <img src="../../../assets/icons/cadastroLivro.png" alt="Livros">
+              <p>Aqui você pode cadastrar um novo livro e seus exemplares.</p>
+            </div>
+          </a>
+
+          <a class="opcao" href="../gestaoDeLivros/gestaoDeLivros.html">
+            <div class="margemOpcao">
+              <h1>Gestão de livros</h1>
+              <img src="../../../assets/icons/livros.png" alt="Livros">
+              <p>Aqui você pode acessar a lista de todos os livros com exemplares disponíveis para empréstimo.</p>
+            </div>
+          </a>
+
+          <a class="opcao" href="../rankingDeLeitores/rankingDeLeitores.html">
+            <div class="margemOpcao">
+              <h1>Ranking de leitores</h1>
+              <img src="../../../assets/icons/ranking.png" alt="Livros">
+              <p>Aqui você pode verificar a pontuação de leitura de um aluno.</p>
+            </div>
+          </a>
+        </div>
+      </div>  
+    </main>
+
+    <footer class="rodape"></footer>
+  </body>
+</html>

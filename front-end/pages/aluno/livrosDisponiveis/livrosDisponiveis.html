@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Livros disponíveis</title>
+
+    <link rel="stylesheet" href="../../../assets/css/padroesGerais.css">
+    <link rel="stylesheet" href="../../../assets/css/templates.css">
+    <link rel="stylesheet" href="./livrosDisponiveis.css">
+
+    <script src="../../../js/geral/carregarTemplates.js"></script>
+    <script src="../../../js/geral/messageBox.js"></script>
+    <script src="../../../js/aluno/livros.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous" defer>
+    </script>
+  </head>
+
+  <body>
+    <div id="carregarMessageBox"></div>
+    <img 
+      src="../../../assets/gifs/loading.gif" 
+      alt="Loading"
+      class="iconLoading"
+      id="loading"
+    >
+
+    <header class="cabecalho">
+      <div class="margemCabecalho">
+        <a href="../paginaDoAluno/paginaDoAluno.html">
+          <img 
+            src="../../../assets/icons/reply.png" 
+            class="iconCabecalho"
+            alt="Menu"
+          >
+        </a>
+
+        <h1>Livros disponíveis</h1>
+
+        <p></p>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="margemContainer">
+        <div id="containerLivros" class="containerLivros">
+        </div>
+      </div>  
+    </main>
+
+    <footer class="rodape"></footer>
+  </body>
+</html>

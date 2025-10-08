@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Página do totem</title>
+
+    <link rel="stylesheet" href="../../../assets/css/padroesGerais.css">
+    <link rel="stylesheet" href="../../../assets/css/templates.css">
+    <link rel="stylesheet" href="./paginaDoTotem.css">
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous" defer>
+    </script>
+  </head>
+
+  <body>
+    <input type="checkbox" class="menu" id="menu">
+    <label class="sobreposicaoMenuBar" for="menu">
+    </label>
+
+    <nav class="menuBar">
+      <div class="margemMenuBar">
+        <h1>Página do Totem</h1>
+        <div class="opcoes">
+          <a class="opcaoMenuBar" href="../retirarLivro/retirarLivro.html">
+            <img 
+              src="../../../assets/icons/retirar.png" 
+              alt="icon aluno"
+              class="iconOpcaoMenuBar"    
+            >
+            <p>Retirar livro</p>
+          </a>
+
+          <a class="opcaoMenuBar" href="../devolverLivro/devolverLivro.html">
+            <img 
+              src="../../../assets/icons/devolver.png" 
+              alt="icon livros"
+              class="iconOpcaoMenuBar"    
+            >
+            <p>Devolver livro</p>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="cabecalho">
+      <div class="margemCabecalho">
+        <label for="menu">
+          <img 
+            src="../../../assets/icons/menu.png" 
+            class="iconCabecalho"
+            alt="Menu"
+          >
+        </label>
+
+        <h1>Página do Totem</h1>
+
+        <p></p>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="margemContainer">
+        <div class="containerOpcoes">
+          <a class="opcao" href="../retirarLivro/retirarLivro.html">
+            <div class="margemOpcao">
+              <h1>Retirada de livro</h1>
+              <img src="../../../assets/icons/retirar.png" alt="Livros">
+              <p>Aqui você pode cadastrar um novo livro e seus exemplares.</p>
+            </div>
+          </a>
+
+          <a class="opcao" href="../devolverLivro/devolverLivro.html">
+            <div class="margemOpcao">
+              <h1>Devolução de livro</h1>
+              <img src="../../../assets/icons/devolver.png" alt="Livros">
+              <p>Aqui você pode acessar a lista de todos os livros com exemplares disponíveis para empréstimo.</p>
+            </div>
+          </a>
+        </div>
+      </div>  
+    </main>
+
+    <footer class="rodape"></footer>
+  </body>
+</html>
