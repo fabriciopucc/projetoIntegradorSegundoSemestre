@@ -5,17 +5,18 @@ const local = {
   user: "root",
   password: "123456",
   database: "biblioteca",
-}
-
-const servidor = {
-  host: "mysql.railway.internal",
-  user: "root",
-  password: "mwtmeHDLhsylqJfRGoIKhfqgXvBlsekt",
-  database: "railway",
   port: "3306"
 }
 
-let seraLocal = true;
+const servidor = {
+  host: "gondola.proxy.rlwy.net",
+  user: "root",
+  password: "mwtmeHDLhsylqJfRGoIKhfqgXvBlsekt",
+  database: "railway",
+  port: "46786"
+}
+
+let seraLocal = false;
 
 //Conexão com banco de dados
 const conexao = mysql.createConnection((seraLocal) ? local : servidor);
