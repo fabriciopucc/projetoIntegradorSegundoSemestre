@@ -7,6 +7,11 @@ class AlunoController{
     res.json(retorno);
   }
 
+   async listarAlunosPorOrdemDePontuacao(req, res) {
+    const retorno = await AlunoRepository.listarAlunosPorOrdemDePontuacao();
+    res.json(retorno);
+  }
+
   async salvarAluno(req, res){
     const aluno = req.body;
     const retorno = await AlunoRepository.salvarAluno(aluno);

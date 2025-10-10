@@ -8,9 +8,11 @@
 
     <link rel="stylesheet" href="../../../assets/css/padroesGerais.css">
     <link rel="stylesheet" href="../../../assets/css/templates.css">
+    <link rel="stylesheet" href="./gestaoDeLivros.css">
 
     <script src="../../../js/geral/carregarTemplates.js"></script>
     <script src="../../../js/geral/messageBox.js"></script>
+    <script src="../../../js/bibliotecario/livros.js"></script>
 
     <script
       src="https://code.jquery.com/jquery-3.6.1.min.js"
@@ -20,6 +22,8 @@
   </head>
 
   <body>
+    <div id="carregarLoading"></div>
+
     <header class="cabecalho">
       <div class="margemCabecalho">
         <a href="../paginaDoBibliotecario/pagindaDoBibliotecario.html">
@@ -37,7 +41,18 @@
     </header>
 
     <main class="container">
-      <div class="margemContainer centralizar">
+      <div class="margemContainer">
+        <header class="botoesGestaoLivros">
+          <a 
+            href="../cadastroLivro/cadastroLivro.html"
+            class="linkBotaoCadastrar"
+          >
+            Cadastrar livro
+          </a>
+        </header>
+
+        <div id="containerLivros" class="containerLivros">
+        </div>
       </div>  
     </main>
 

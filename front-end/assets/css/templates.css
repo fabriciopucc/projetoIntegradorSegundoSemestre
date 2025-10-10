@@ -1,5 +1,18 @@
 /*Arquivo específico para estilização de todos elementos criados com várias tagas HTML que se repetirâo pelo site, por exemplo: a menuBar, que será utilizada em mais de uma página*/
 
+.aviso{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: initial;
+}
+
+.centralizarAviso{
+  height: 90vh;
+}
+
 /*Cabecalho*/
 .cabecalho{
   width: 100%;
@@ -124,31 +137,15 @@
   width: 90%;
   min-height: calc(100vh - 60px);
   display: flex;
-  align-items: start;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: left;
 }
 
 .centralizar{
-  align-items: center;
-}
-
-.linkBotao{
-  width: 150px;
-  height: 40px;
-  font-size: 15px;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  border-radius: 5px;
-  color: #fff;
-  background-color: var(--primaria);
-  cursor: pointer;
 }
 
-.linkBotao:hover{
-  filter: brightness(80%);
-}
 
 /*Rodape*/
 .rodape{
@@ -169,9 +166,5 @@
   .menuBar{
     width: 75%;
     left: -75%;
-  }
-
-  form{
-      width: 100%;
   }
 }

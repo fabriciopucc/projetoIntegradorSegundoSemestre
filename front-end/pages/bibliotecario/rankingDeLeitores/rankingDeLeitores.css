@@ -1,0 +1,101 @@
+.painelAlunos{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px #4571f32b, 0 6px 12px #4571f332;
+  background-color: var(--card);
+  margin-bottom: 25px;
+}
+
+.margemPainelAlunos{
+  width: 95%;
+  margin: 30px 0;
+}
+
+.linha{
+  width: 100%;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.par{
+  background-color: var(--contraste);
+}
+
+.linha:nth-child(1) div{
+  font-weight: bold;
+}
+
+.linha div{
+  display: flex;
+}
+
+.linha div p{
+  margin: 0 0 0 15px;
+}
+
+.div-1{
+  width: 15%;
+}
+
+.div-2{
+  width: 20%;
+}
+
+.div-3{
+  width: 25%;
+}
+
+.div-4{
+  width: 15%;
+}
+
+.div-5{
+  width: 20%;
+  justify-content: center;
+}
+
+.div-5 button{
+  width: 80%;
+}
+
+.ouro, .prata, .bronze{
+  font-weight: bold;
+  color: rgb(234, 199, 0);
+  text-shadow: 0 0 25px gold, 0 0 18px gold;
+}
+
+.prata{color: silver; text-shadow: 0 0 25px silver, 0 0 18px silver;}
+.bronze{color: rgb(174, 52, 52); text-shadow: 0 0 25px rgb(171, 51, 51), 0 0 18px rgb(163, 50, 50);}
+
+@media screen and (max-width: 750px) {
+  .linha:nth-child(1){display: none;}
+
+  .linha{
+    padding: 15px 0;
+  }
+
+  .linha div p{
+    width: 100%;
+    text-align: center;
+  }
+
+  .div-1, .div-2, .div-3, .div-4{
+    width: 50%;
+  }
+
+  .div-3, .div-4{
+    margin: 15px 0;
+  }
+
+  .div-5{
+    width: 100%;
+  }
+
+  .div-5 button{
+    width: calc(100% - 30px);
+  }
+}

@@ -1,13 +1,24 @@
+window.onload = () => {
+  carregarTemplates();
+}
+
 const enviarFormularioCadastrarLivro = () => {
   
   const livro = {
-    nome: $("#nome").val()
+    etiqueta: $("#etiqueta").val(),
+    isbn: $("#isbn").val(),
+    titulo: $("#titulo").val(),
+    genero: $("#genero").val(),
+    autor: $("#autor").val(),
+    editora: $("#editora").val(),
+    anoPublicacao: $("#anoPublicacao").val(),
+    quantidadeExemplares: $("#quantidadeExemplares").val()
   };
 
-  console.log("AAA")
+  console.log(livro)
 
   if(validarFormularioCadastrarLivro(livro)){
-    $.ajax({
+    /*$.ajax({
       method: "POST",
       url: "http://localhost:3000/livros",
       contentType : 'application/json',
@@ -18,6 +29,6 @@ const enviarFormularioCadastrarLivro = () => {
       exibirMessageBox("Livro cadastrado com sucesso!", "Prosseguir", true);
     }).fail(function (err)  {
       console.log(err);
-    });
+    });*/
   }
 }

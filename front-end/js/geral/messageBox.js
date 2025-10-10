@@ -1,4 +1,4 @@
-const exibirMessageBox = (mensagem, textoBotao, sucesso) => {
+const exibirMessageBox = (mensagem, textoBotao, sucesso, destino = '') => {
   const messageBox = $("#messageBox");
 
   $("#textoMessageBox").text(mensagem);
@@ -9,6 +9,7 @@ const exibirMessageBox = (mensagem, textoBotao, sucesso) => {
   }
   else{
     messageBox.addClass("ativo");
-    $("#botaoMessageBox").addClass((sucesso) ? "sucesso" : "erro");
+    $("#botaoMessageBox").removeClass(["sucesso", "erro"]).addClass((sucesso) ? "sucesso" : "erro");
+    if(destino) $("#botaoMessageBox").attr('href', destino);
   }
 }

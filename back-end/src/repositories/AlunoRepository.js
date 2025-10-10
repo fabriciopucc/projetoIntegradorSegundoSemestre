@@ -7,6 +7,11 @@ class AlunoRepository{
     return consulta(query, 'Não foi possível listar!')  
   }
 
+  listarAlunosPorOrdemDePontuacao(){
+    const query = "select * from alunos order by pontuacao desc";
+    return consulta(query, "Não foi possível retornar o ranking!");
+  }
+
    salvarAluno(aluno){
     const query = "insert into alunos set ?;";
     return consulta(query, aluno, 'Não foi possível salvar!');

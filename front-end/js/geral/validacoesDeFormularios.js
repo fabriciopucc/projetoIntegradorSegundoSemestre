@@ -26,7 +26,8 @@ const validarFormularioCadastrarAluno = (aluno) => {
 
 //Validação formulário cadastro livro
 const validarFormularioCadastrarLivro = (livro) => {
-  if(livro.nome){
+  if(livro.etiqueta && livro.isbn && livro.titulo && livro.genero !== "escolha" &&
+     livro.autor && livro.editora && livro.anoPublicacao && livro.quantidadeExemplares){
     return true;
   }else{
     exibirMessageBox("Preencha todos os dados obrigatórios!", "Entendido", false);

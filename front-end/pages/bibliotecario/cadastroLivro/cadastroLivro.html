@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="../../../assets/css/padroesGerais.css">
     <link rel="stylesheet" href="../../../assets/css/templates.css">
+    <link rel="stylesheet" href="./cadastroLivro.css">
 
     <script src="../../../js/geral/carregarTemplates.js"></script>
     <script src="../../../js/geral/messageBox.js"></script>
@@ -46,12 +47,98 @@
         <form
           id="formularioCadastrarLivro"
         >
-          <label for="">Nome</label>
+          <div class="divisorForm">
+            <label>Etiqueta</label>
+            <input 
+              type="text"
+              placeholder="Digite a etiqueta do livro"
+              id="etiqueta"
+            >
+          </div>
+
+          <div class="divisorForm">
+            <label for="">ISBN</label>
+            <input 
+              type="number"
+              placeholder="Digite o ISBN do livro"
+              id="isbn"
+            >
+          </div>
+          
+
+          <label for="">Titulo</label>
           <input 
             type="text"
-            placeholder="Digite o nome do livro"
-            id="nome"
+            placeholder="Digite o titulo do livro"
+            id="titulo"
           >
+
+          <label>Gênero</label>
+          <select  id="genero">
+            <option value="escolha">Selecione o gênero do livro</option>
+            <option value="ficcao">Ficção</option>
+            <option value="fabula">Fábula</option>
+            <option value="nao-ficcao">Não Ficção</option>
+            <option value="romance">Romance</option>
+            <option value="fantasia">Fantasia</option>
+            <option value="ficcao-cientifica">Ficção Científica</option>
+            <option value="terror">Terror / Horror</option>
+            <option value="misterio">Mistério / Suspense</option>
+            <option value="aventura">Aventura</option>
+            <option value="biografia">Biografia</option>
+            <option value="autobiografia">Autobiografia</option>
+            <option value="historia">História</option>
+            <option value="poesia">Poesia</option>
+            <option value="drama">Drama</option>
+            <option value="infantil">Infantil</option>
+            <option value="juvenil">Juvenil</option>
+            <option value="autoajuda">Autoajuda</option>
+            <option value="religiao">Religião / Espiritualidade</option>
+            <option value="classicos">Clássicos</option>
+            <option value="distopia">Distopia</option>
+            <option value="comedia">Comédia / Humor</option>
+            <option value="ensaios">Ensaios</option>
+            <option value="tecnologia">Tecnologia</option>
+            <option value="educacional">Educacional / Didático</option>
+            <option value="negocios">Negócios / Economia</option>
+            <option value="filosofia">Filosofia</option>
+            <option value="psicologia">Psicologia</option>
+            <option value="arte">Arte</option>
+            <option value="erotico">Erótico</option>
+            <option value="policial">Policial</option>
+          </select>
+
+          <label>Autor</label>
+          <input 
+            type="text"
+            placeholder="Digite o nome do autor"
+            id="autor"
+          >
+
+          <label for="">Editora</label>
+          <input 
+            type="text"
+            placeholder="Digite o nome da editora"
+            id="editora"
+          >
+
+          <div class="divisorForm">
+            <label for="">Ano publicação</label>
+            <input 
+              type="number"
+              placeholder="Digite o ano de publicação"
+              id="anoPublicacao"
+            >
+          </div>
+
+          <div class="divisorForm">
+            <label for="">Quantidade exemplares</label>
+            <input 
+              type="number"
+              placeholder="Digite a quantidade de exemplares"
+              id="quantidadeExemplares"
+            >
+          </div>
 
           <button
             type="button"

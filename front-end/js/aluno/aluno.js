@@ -1,3 +1,7 @@
+window.onload = () => {
+  carregarTemplates();
+}
+
 const enviarFormularioCadastrarAluno = () => {
   const aluno = {
     ra: $("#ra").val(),
