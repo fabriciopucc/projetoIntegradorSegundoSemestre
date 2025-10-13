@@ -16,7 +16,7 @@ const validarFormularioCadastrarAluno = (aluno) => {
       return true;
     }
     else{
-       exibirMessageBox(erros, "Entendido", false);
+      exibirMessageBox(erros, "Entendido", false);
     }
   }else{
     exibirMessageBox("Preencha todos os dados obrigatórios!", "Entendido", false);
@@ -26,15 +26,30 @@ const validarFormularioCadastrarAluno = (aluno) => {
 
 //Validação formulário cadastro livro
 const validarFormularioCadastrarLivro = (livro) => {
-  if(livro.etiqueta && livro.isbn && livro.titulo && livro.genero !== "escolha" &&
-     livro.autor && livro.editora && livro.anoPublicacao && livro.quantidadeExemplares){
+  let anoAtual = new Date().getFullYear();
+
+  if(livro.etiqueta && livro.isbn && livro.titulo && livro.sinopse 
+  && livro.autor && livro.editora && livro.ano_publicacao && livro.quantidade_exemplares){
+    let erros = [];
+
+    if(livro.isbn.length !== 13) erros.push("Digite o ISBN corretamente!");
+    if(livro.genero == "escolha") erros.push("Escolha um gênero válido!");
+    if(livro.ano_publicacao.length !== 4 || livro.ano_publicacao > anoAtual) erros.push("Digite o ano de publicação corretamente!");
+    if(livro.quantidade_exemplares <= 0) erros.push("O livro deve possuir ao menos um exemplar!");
+    
+    if(erros.length === 0){
+      return true;
+    }
+    else{
+      exibirMessageBox(erros, "Entendido", false);
+    }
+
     return true;
   }else{
     exibirMessageBox("Preencha todos os dados obrigatórios!", "Entendido", false);
     return false;
   }
 }
-
 
 function validarCPF(cpf){
   const digitoJ = gerarDigitoVerificador(cpf, 10);

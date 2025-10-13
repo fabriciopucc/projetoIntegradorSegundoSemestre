@@ -1,7 +1,11 @@
 import express from 'express';
+
+//Cor's
 import cors from 'cors';
-import routerLivros from './src/routes/routesLivros.js';
+
+//Routers
 import alunoRouter from './src/routes/AlunoRouter.js';
+import publicacaoRouter from './src/routes/PublicacaoRouter.js';
 
 const app = express();
 
@@ -17,5 +21,5 @@ app.use(cors({
 }));
 
 //Rotas
-app.use("/livros", routerLivros);
 app.use("/alunos", alunoRouter);
+app.use("/publicacoes", publicacaoRouter);

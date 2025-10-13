@@ -10,11 +10,11 @@
     <link rel="stylesheet" href="../../../assets/css/templates.css">
     <link rel="stylesheet" href="./cadastroLivro.css">
 
-    <script src="../../../js/geral/carregarTemplates.js"></script>
-    <script src="../../../js/geral/messageBox.js"></script>
-    <script src="../../../js//geral/validacoesDeFormularios.js"></script>
-    <script src="../../../js/geral/utils.js"></script>
-    <script src="../../../js/bibliotecario/livro.js"></script>
+    <script src="../../../js/carregarTemplates.js"></script>
+    <script src="../../../js/messageBox.js"></script>
+    <script src="../../../js/validacoesDeFormularios.js"></script>
+    <script src="../../../js/utils.js"></script>
+    <script src="./cadastroLivro.js.js"></script>
 
     <script
       src="https://code.jquery.com/jquery-3.6.1.min.js"
@@ -57,7 +57,7 @@
           </div>
 
           <div class="divisorForm">
-            <label for="">ISBN</label>
+            <label >ISBN</label>
             <input 
               type="number"
               placeholder="Digite o ISBN do livro"
@@ -66,12 +66,19 @@
           </div>
           
 
-          <label for="">Titulo</label>
+          <label >Titulo</label>
           <input 
             type="text"
             placeholder="Digite o titulo do livro"
             id="titulo"
           >
+
+          <label>Sinopse</label>
+          <textarea
+            placeholder="Digite um breve resumo do livro (máximo de 255 caracteres)"
+            id="sinopse"
+            maxlength="255"
+          ></textarea>
 
           <label>Gênero</label>
           <select  id="genero">
@@ -115,7 +122,7 @@
             id="autor"
           >
 
-          <label for="">Editora</label>
+          <label>Editora</label>
           <input 
             type="text"
             placeholder="Digite o nome da editora"
@@ -123,20 +130,20 @@
           >
 
           <div class="divisorForm">
-            <label for="">Ano publicação</label>
+            <label>Ano publicação</label>
             <input 
               type="number"
               placeholder="Digite o ano de publicação"
-              id="anoPublicacao"
+              id="ano_publicacao"
             >
           </div>
 
           <div class="divisorForm">
-            <label for="">Quantidade exemplares</label>
+            <label>Quantidade exemplares</label>
             <input 
               type="number"
               placeholder="Digite a quantidade de exemplares"
-              id="quantidadeExemplares"
+              id="quantidade_exemplares"
             >
           </div>
 

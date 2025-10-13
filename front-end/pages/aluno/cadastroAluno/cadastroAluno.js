@@ -19,7 +19,7 @@ const enviarFormularioCadastrarAluno = () => {
       data: JSON.stringify(aluno)
     }).done(function () {
       limparInputsDeUmFormulario("formularioCadastrarAluno");
-      exibirMessageBox("Aluno cadastrado com sucesso!", "Prosseguir", true);
+      exibirMessageBox("Aluno cadastrado com sucesso!", "Prosseguir", true, "../paginaDoAluno/paginaDoAluno.html");
     }).fail(function (err)  {
       let mensagem = err.responseText.split("<pre>")[1].replace("</pre>", "").replace("</body>", "").replace("</html>", "");
       exibirMessageBox(mensagem, "Entendido", false);

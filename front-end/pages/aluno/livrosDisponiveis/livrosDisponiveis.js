@@ -6,7 +6,7 @@ window.onload = () => {
 const listarLivros = () => {
   $.ajax({
       method: "GET",
-      url: "http://localhost:3000/livros"
+      url: "http://localhost:3000/publicacoes"
   }).done(function (dados) {
     carregarLivros(dados);
   }).fail(function (err)  {
@@ -21,7 +21,7 @@ const carregarLivros = (livros) => {
     livros.map((livro) => {
       $("#containerLivros").append(
         "<div class='livro'>"+
-          "<h1>"+livro.nome+"</h1>"+
+          "<h1>"+livro.titulo+"</h1>"+
         "</div>"
       );
     })

@@ -8,11 +8,11 @@
 
     <link rel="stylesheet" href="../../../assets/css/padroesGerais.css">
     <link rel="stylesheet" href="../../../assets/css/templates.css">
-    <link rel="stylesheet" href="./pontuacaoDoAluno.css">
+    <link rel="stylesheet" href="./informacoesAluno.css">
 
     <script src="../../../js/carregarTemplates.js"></script>
     <script src="../../../js/messageBox.js"></script>
-    <script src="./pontuacaoAluno.js"></script>
+    <script src="./informacoesAluno.js"></script>
 
     <script
       src="https://code.jquery.com/jquery-3.6.1.min.js"
@@ -26,7 +26,7 @@
 
     <header class="cabecalho">
       <div class="margemCabecalho">
-        <a href="../paginaDoAluno/paginaDoAluno.html">
+        <a href="../rankingDeLeitores/rankingDeLeitores.html">
           <img 
             src="../../../assets/icons/reply.png" 
             class="iconCabecalho"
@@ -34,7 +34,7 @@
           >
         </a>
 
-        <h1>Pontuação do aluno</h1>
+        <h1>informações do aluno</h1>
 
         <p></p>
       </div>
@@ -42,25 +42,6 @@
 
     <main class="container">
       <div class="margemContainer centralizar">
-        <div class="botoesSobreAluno">
-          <input
-            class="inputPesquisarAluno"
-            type="number"
-            placeholder="Digite o RA do aluno"
-            id="raAlunoPesquisar"
-          >
-
-          <button 
-            class="botaoPesquisar"
-            onclick="buscarAlunoPeloRA(document.getElementById('raAlunoPesquisar').value)"  
-          >
-            <img 
-              src="../../../assets/icons/lupa.png" 
-              alt="Icon lupa"
-            >
-          </button>
-        </div>
-
         <div class="sobreAluno">
           <h1 class="tituloPontuacao" id="tipoLeitor">Leitor ?</h1>
 

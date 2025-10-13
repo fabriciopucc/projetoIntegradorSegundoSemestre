@@ -3,7 +3,6 @@ window.onload = () => {
   carregarTemplates();
 }
 
-
 const listarAlunosPorOrdemDePontuacao = () => {
   $.ajax({
     method: "GET",
@@ -39,7 +38,9 @@ const carregarAlunos = (alunos) => {
           '</div>'+
 
           '<div class="div-5">'+
-            '<button>Dados</button>'+
+            '<button onclick="redirecionarParaInformacoesDoAluno('+aluno.codigo+')">'+
+              'Dados'+
+            '</button>'+
           '</div>'+
         '</div>'
       );
@@ -54,4 +55,9 @@ const carregarAlunos = (alunos) => {
   else{
      $("#painelAlunos").append("<h1 class='aviso'>Sem registros</h1>")
   }
+}
+
+const redirecionarParaInformacoesDoAluno = (codigo) => {
+  localStorage.setItem('codigoAluno', codigo);
+  location.href="../informacoesAluno/informacoesAluno.html";
 }
