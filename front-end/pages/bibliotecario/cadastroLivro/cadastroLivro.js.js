@@ -15,8 +15,6 @@ const enviarFormularioCadastrarLivro = () => {
     quantidade_exemplares: $("#quantidade_exemplares").val()
   };
 
-  console.log(livro);
-
   if(validarFormularioCadastrarLivro(livro)){
     $.ajax({
       method: "POST",

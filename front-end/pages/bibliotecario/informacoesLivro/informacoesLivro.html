@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Informações do livro</title>
+
+    <link rel="stylesheet" href="../../../assets/css/padroesGerais.css">
+    <link rel="stylesheet" href="../../../assets/css/templates.css">
+    <link rel="stylesheet" href="./informacoesLivro.css">
+
+    <script src="../../../js/carregarTemplates.js"></script>
+    <script src="../../../js/messageBox.js"></script>
+    <script src="./informacoesLivro.js"></script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous" defer>
+    </script>
+  </head>
+
+  <body>
+    <div id="carregarMessageBox"></div>
+
+    <header class="cabecalho">
+      <div class="margemCabecalho">
+        <a href="../gestaoDeLivros/gestaoDeLivros.html">
+          <img 
+            src="../../../assets/icons/reply.png" 
+            class="iconCabecalho"
+            alt="Menu"
+          >
+        </a>
+
+        <h1>informações do livro</h1>
+
+        <p></p>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="margemContainer centralizar">
+        <div class="sobreLivro">
+          <div class="margemSobreLivro">
+              <label>Etiqueta</label>
+              <p id="etiquetaLivro">xxxxxxxx</p>
+
+              <label>ISBN</label>
+              <p id="isbnLivro">xxxxxxxx</p>
+
+              <label>Titulo</label>
+              <p id="tituloLivro">xxxxxxxx</p>
+
+              <label>Sinopse</label>
+              <p id="sinopseLivro">xxxxxxxx</p>
+
+              <label>Gênero</label>
+              <p id="generoLivro">xxxxxxxx</p>
+
+              <label>Autor</label>
+              <p id="autorLivro">xxxxxxxx</p>
+
+              <label>Editora</label>
+              <p id="editoraLivro">xxxxxxxx</p>
+
+              <label>Ano publicação</label>
+              <p id="anoPublicacaoLivro">xxxx</p>
+
+              <div class="botoesSobreLivro">
+                <button
+                  onclick="redirecionarParaEdicaoDoLivro()"
+                >
+                  Editar
+                </button>
+
+                <button>
+                  Excluir
+                </button>
+              </div>
+          </div>
+        </div>
+      </div>  
+    </main>
+
+    <footer class="rodape"></footer>
+  </body>
+</html>

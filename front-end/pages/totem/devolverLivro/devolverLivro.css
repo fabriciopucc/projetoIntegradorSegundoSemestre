@@ -1,0 +1,24 @@
+.linha{
+  width: 100%;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.linha input{
+  margin: 0;
+}
+
+.linha button{
+  width: 40px;
+  height: 40px;
+  margin: 0 0 0 0;
+  margin-left: 10px;
+}
+
+.esconderInputCodigoAluno{
+  display: none;
+}
+
+.iconPesquisar{
+  width: 20px;
+}

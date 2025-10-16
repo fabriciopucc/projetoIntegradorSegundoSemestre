@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Edição de livro</title>
+
+    <link rel="stylesheet" href="../../../assets/css/padroesGerais.css">
+    <link rel="stylesheet" href="../../../assets/css/templates.css">
+    <link rel="stylesheet" href="./edicaoLivro.css">
+
+    <script src="../../../js/carregarTemplates.js"></script>
+    <script src="../../../js/messageBox.js"></script>
+    <script src="../../../js/validacoesDeFormularios.js"></script>
+    <script src="../../../js/utils.js"></script>
+    <script src="./edicaoLivro.js"></script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous" defer>
+    </script>
+  </head>
+
+  <body>
+    <div id="carregarMessageBox"></div>
+
+    <header class="cabecalho">
+      <div class="margemCabecalho">
+        <a href="../gestaoDeLivros/gestaoDeLivros.html">
+          <img 
+            src="../../../assets/icons/reply.png" 
+            class="iconCabecalho"
+            alt="Menu"
+          >
+        </a>
+
+        <h1>Edição de livro</h1>
+
+        <p></p>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="margemContainer centralizar">
+        <form
+          id="formularioEditarLivro"
+        >
+          <div class="divisorForm">
+            <label>Etiqueta</label>
+            <input 
+              type="text"
+              placeholder="Digite a etiqueta do livro"
+              id="etiqueta"
+              readonly
+            >
+          </div>
+
+          <div class="divisorForm">
+            <label >ISBN</label>
+            <input 
+              type="number"
+              placeholder="Digite o ISBN do livro"
+              id="isbn"
+              readonly
+            >
+          </div>
+          
+
+          <label >Titulo</label>
+          <input 
+            type="text"
+            placeholder="Digite o titulo do livro"
+            id="titulo"
+          >
+
+          <label>Sinopse</label>
+          <textarea
+            placeholder="Digite um breve resumo do livro (máximo de 255 caracteres)"
+            id="sinopse"
+            maxlength="255"
+          ></textarea>
+
+          <label>Gênero</label>
+          <select  id="genero">
+            <option value="escolha">Selecione o gênero do livro</option>
+            <option value="ficcao">Ficção</option>
+            <option value="fabula">Fábula</option>
+            <option value="nao-ficcao">Não Ficção</option>
+            <option value="romance">Romance</option>
+            <option value="fantasia">Fantasia</option>
+            <option value="ficcao-cientifica">Ficção Científica</option>
+            <option value="terror">Terror / Horror</option>
+            <option value="misterio">Mistério / Suspense</option>
+            <option value="aventura">Aventura</option>
+            <option value="biografia">Biografia</option>
+            <option value="autobiografia">Autobiografia</option>
+            <option value="historia">História</option>
+            <option value="poesia">Poesia</option>
+            <option value="drama">Drama</option>
+            <option value="infantil">Infantil</option>
+            <option value="juvenil">Juvenil</option>
+            <option value="autoajuda">Autoajuda</option>
+            <option value="religiao">Religião / Espiritualidade</option>
+            <option value="classicos">Clássicos</option>
+            <option value="distopia">Distopia</option>
+            <option value="comedia">Comédia / Humor</option>
+            <option value="ensaios">Ensaios</option>
+            <option value="tecnologia">Tecnologia</option>
+            <option value="educacional">Educacional / Didático</option>
+            <option value="negocios">Negócios / Economia</option>
+            <option value="filosofia">Filosofia</option>
+            <option value="psicologia">Psicologia</option>
+            <option value="arte">Arte</option>
+            <option value="erotico">Erótico</option>
+            <option value="policial">Policial</option>
+          </select>
+
+          <label>Autor</label>
+          <input 
+            type="text"
+            placeholder="Digite o nome do autor"
+            id="autor"
+          >
+
+          <label>Editora</label>
+          <input 
+            type="text"
+            placeholder="Digite o nome da editora"
+            id="editora"
+          >
+
+          <div class="divisorForm">
+            <label>Ano publicação</label>
+            <input 
+              type="number"
+              placeholder="Digite o ano de publicação"
+              id="ano_publicacao"
+            >
+          </div>
+
+          <div class="divisorForm">
+            <label>Quantidade exemplares</label>
+            <input 
+              type="number"
+              placeholder="Digite a quantidade de exemplares"
+              id="quantidade_exemplares"
+            >
+          </div>
+
+          <button
+            type="button"
+            onclick="enviarFormularioEditarLivro()"
+          >
+            Cadastrar
+          </button>
+        </form>
+      </div>  
+    </main>
+
+    <footer class="rodape"></footer>
+  </body>
+</html>

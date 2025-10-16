@@ -1,6 +1,6 @@
 const exibirMessageBox = (mensagem, textoBotao, sucesso, destino = '') => {
   const messageBox = $("#messageBox");
-
+ 
   $("#textoMessageBox").text(mensagem);
   $("#botaoMessageBox").text(textoBotao);
 

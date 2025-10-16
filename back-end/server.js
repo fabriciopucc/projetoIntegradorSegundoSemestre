@@ -6,6 +6,7 @@ import cors from 'cors';
 //Routers
 import alunoRouter from './src/routes/AlunoRouter.js';
 import publicacaoRouter from './src/routes/PublicacaoRouter.js';
+import emprestimoRouter from './src/routes/emprestimoRouter.js';
 
 const app = express();
 
@@ -23,3 +24,4 @@ app.use(cors({
 //Rotas
 app.use("/alunos", alunoRouter);
 app.use("/publicacoes", publicacaoRouter);
+app.use("/emprestimos", emprestimoRouter);

@@ -7,8 +7,13 @@ class PublicacaoRepository{
     return consulta(query, 'Não foi possível listar!')  
   }
 
+  listarPublicacoesDisponiveis(){
+    const query = "select * from publicacoes where quantidade_exemplares > 0;"
+    return consulta(query, 'Não foi possível listar!')  
+  }
+
   buscarPublicacaoPorCodigo(codigo){
-    const query = "select * from publicacoes where codigo = ?;"
+    const query = "select * from publicacoes where codigo = ?;";
     return consulta(query, codigo, 'Nenhuma publicação possui este código!') ;
   }
 
@@ -20,6 +25,11 @@ class PublicacaoRepository{
   atualizarPublicacao(publicacao, codigo){
     const query = "update publicacoes set ? where codigo = ?";
     return consulta(query, [publicacao, codigo], 'Não foi possível atualizar!');
+  }
+
+  atualizarQuantidadeDeExemplaresDaPublicacao(quantidadeAtual, codigo){
+    const query = "update publicacoes set quantidade_exemplares = ? where codigo = ?";
+    return consulta(query, [quantidadeAtual, codigo], 'Não foi possível atualizar!');
   }
 
   excluirPublicacao(codigo){

@@ -8,8 +8,8 @@
   --fundo: #fff;
   --inputs: #f1f3f8;
   --bordas: #bcccf7;
-  --titulos: rgb(32, 32, 32);
-  --textos: rgb(114, 114, 114);
+  --titulos: #282b32;
+  --textos: #81879b;
   --primaria: #4571f3;
   --primariaEscura: #3557bd;
   --card: #f1f3f8;
@@ -22,6 +22,14 @@ body{
   margin: 0;
   padding: 0;
   background-color: var(--fundo);
+}
+
+h1{
+  color: var(--titulos);
+}
+
+p{
+  color: var(--textos);
 }
 
 a{

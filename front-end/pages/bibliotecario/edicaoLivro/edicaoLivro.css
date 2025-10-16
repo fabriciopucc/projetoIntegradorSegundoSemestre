@@ -1,0 +1,11 @@
+.divisorForm{
+  width: 47.5%;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 450px) {
+  .divisorForm{
+    width: 100%;
+  }
+}

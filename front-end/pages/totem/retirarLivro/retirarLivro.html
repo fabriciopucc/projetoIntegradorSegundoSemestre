@@ -8,9 +8,12 @@
 
     <link rel="stylesheet" href="../../../assets/css/padroesGerais.css">
     <link rel="stylesheet" href="../../../assets/css/templates.css">
+    <link rel="stylesheet" href="./retirarLivro.css">
 
-    <script src="../../../js/geral/carregarTemplates.js"></script>
-    <script src="../../../js/geral/messageBox.js"></script>
+    <script src="../../../js/carregarTemplates.js"></script>
+    <script src="../../../js/messageBox.js"></script>
+    <script src="../../../js/validacoesDeFormularios.js"></script>
+    <script src="./retirarLivro.js"></script>
 
     <script
       src="https://code.jquery.com/jquery-3.6.1.min.js"
@@ -20,6 +23,8 @@
   </head>
 
   <body>
+    <div id="carregarMessageBox"></div>
+
     <header class="cabecalho">
       <div class="margemCabecalho">
         <a href="../paginaDoTotem/paginaDoTotem.html">
@@ -38,6 +43,50 @@
 
     <main class="container">
       <div class="margemContainer centralizar">
+        <form>
+          <label>RA</label>
+          <div class="linha">
+            <input 
+              type="text" 
+              placeholder="Digite e busque o RA que solicitará empréstimo"
+              id="raAluno" 
+              class="inputRetirada" 
+            >
+
+            <button
+              type="button"
+              onclick="buscarAlunoPeloRA()"
+            >
+              <img 
+                src="../../../assets/icons/lupa.png" 
+                alt="iconLupa"
+                class="iconPesquisar"  
+              >
+            </button>
+          </div>
+
+          <input 
+            type="text" 
+            id="codigoAluno" 
+            value="escolha"
+            class="esconderInputCodigoAluno"  
+          >
+
+          <label>Escolha o livro</label>
+          <select
+            id="codigoLivro"
+            disabled
+          >
+            <option value="escolha">Digite o RA do aluno primeiro</option>
+          </select>
+
+          <button 
+            type="button"
+            onclick="enviaRFormularioRetirarLivro()"
+          >
+            Solicitar empréstimo
+          </button>
+        </form>
       </div>  
     </main>
 

@@ -27,6 +27,11 @@ class AlunoRepository{
     return consulta(query, aluno, 'Não foi possível salvar!');
   }
 
+  atualizarPontuacaoDoAluno(pontuacaoAtual, codigo){
+    const query = "update alunos set pontuacao = ? where codigo = ?"
+    return consulta(query, [pontuacaoAtual, codigo], 'Não foi possível atualizar!');
+  }
+
   excluirAlunoPorCodigo(codigo){
     const query = "delete from alunos where codigo = ?";
     return consulta(query, codigo, "Não foi possível excluir este aluno!");

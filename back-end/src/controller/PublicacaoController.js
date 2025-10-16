@@ -7,6 +7,11 @@ class PublicacaoController {
     res.json(row);
   }
 
+  async listarPublicacoesDisponiveis(req, res) {
+    const row = await PublicacaoRepository.listarPublicacoesDisponiveis();
+    res.json(row);
+  }
+
   async buscarPublicacaoPorCodigo(req, res) {
     const codigo = req.params.codigo;
     const row = await PublicacaoRepository.buscarPublicacaoPorCodigo(codigo);

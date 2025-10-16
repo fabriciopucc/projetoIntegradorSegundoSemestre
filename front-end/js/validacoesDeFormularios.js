@@ -51,6 +51,24 @@ const validarFormularioCadastrarLivro = (livro) => {
   }
 }
 
+const validarFormularioRetirarLivro = (emprestimo) => {
+  if(emprestimo.codigo_aluno !== "escolha" && emprestimo.codigo_publicacao !== "escolha"){
+    return true;
+  }else{
+    exibirMessageBox("Preencha todos os dados obrigatórios!", "Entendido", false);
+    return false;
+  }
+}
+
+const validarFormularioDevolverLivro = (devolucao) => {
+  if(devolucao.codigo_aluno !== "escolha" && devolucao.codigo_publicacao !== "escolha"){
+    return true;
+  }else{
+    exibirMessageBox("Preencha todos os dados obrigatórios!", "Entendido", false);
+    return false;
+  }
+}
+
 function validarCPF(cpf){
   const digitoJ = gerarDigitoVerificador(cpf, 10);
   const digitoK = gerarDigitoVerificador(cpf, 11);
