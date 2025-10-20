@@ -13,7 +13,6 @@ const buscarAlunoPeloRA = () => {
       if(dados.length){
         buscarLivrosDeUmAluno(dados[0].codigo);
         $("#codigoAluno").val(dados[0].codigo);
-        $("#codigoLivro").attr("disabled", false);
       }else{
         exibirMessageBox("Não existe nenhum aluno com este RA!", "Entendido", false);
       }
@@ -37,15 +36,25 @@ const buscarLivrosDeUmAluno = (codigoAluno) => {
 }
 
 const gerarSelectDeLivros = (livros) => {
-  $("#codigoLivro").empty().append(
-    "<option value='escolha'>Escolha</option>"
-  );
+  $("#codigoLivro").empty();
+  $("#mensagemAlternativa").text("");
 
-  livros.map((livro) => {
+  if(livros.length){
+     $("#codigoLivro").attr("disabled", false);
+
     $("#codigoLivro").append(
-      "<option value="+livro.codigo+">"+livro.titulo+"</option>"
+      "<option value='escolha'>Escolha</option>"
     );
-  })
+
+    livros.map((livro) => {
+      $("#codigoLivro").append(
+        "<option value="+livro.codigo+">"+livro.titulo+"</option>"
+      );
+    })
+  }
+  else{
+    $("#mensagemAlternativa").text("Este alluno não possui nenhum livro emprestado!");
+  }
 }
 
 const enviaRFormularioRetirarLivro = () => {
