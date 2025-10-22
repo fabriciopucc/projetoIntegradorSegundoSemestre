@@ -17,12 +17,11 @@ const enviarFormularioCadastrarAluno = () => {
       contentType : 'application/json',
       dataType : 'json',
       data: JSON.stringify(aluno)
-    }).done(function () {
+    }).done(function (dados) {
       limparInputsDeUmFormulario("formularioCadastrarAluno");
-      exibirMessageBox("Aluno cadastrado com sucesso!", "Prosseguir", true, "../paginaDoAluno/paginaDoAluno.html");
-    }).fail(function (err)  {
-      let mensagem = err.responseText.split("<pre>")[1].replace("</pre>", "").replace("</body>", "").replace("</html>", "");
-      exibirMessageBox(mensagem, "Entendido", false);
+      exibirMessageBox(dados, "Prosseguir", true, "../paginaDoAluno/paginaDoAluno.html");
+    }).fail(function (erro)  {
+      exibirMessageBox(erro.responseJSON, "Entendido", false);
     });
   }
 }

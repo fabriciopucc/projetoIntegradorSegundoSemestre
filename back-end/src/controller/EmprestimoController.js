@@ -1,42 +1,52 @@
 import EmprestimoRepository from "../repositories/EmprestimoRepository.js";
-import PublicacaoRepository from "../repositories/PublicacaoRepository.js";
+import LivroRepository from "../repositories/LivroRepository.js";
 import AlunoRepository from '../repositories/AlunoRepository.js';
 
 class EmprestimoController{
 
   async listarEmprestimos(req, res){
-    const retorno = await EmprestimoRepository.listaREmprestimos();
-    res.json(retorno);
+    const retorno = await EmprestimoRepository.listarEmprestimos();
+    res.status(200).json(retorno);
   }
 
   async listarLivrosNaoDevolvidosDeUmAlunoPeloSeuCodigo(req, res){
+    let retorno = "Aluno inexistente!";
+    let status = 400;
+
     const codigoAluno = req.params.codigoAluno;
-    const retorno = await EmprestimoRepository.listarLivrosNaoDevolvidosDeUmAlunoPeloSeuCodigo(codigoAluno);
-    res.json(retorno);
+
+    const buscaAlunoPorCodigo = await AlunoRepository.buscarAlunoPeloCodigo(codigoAluno);
+
+    if(buscaAlunoPorCodigo.length){
+      retorno = await EmprestimoRepository.listarLivrosNaoDevolvidosDeUmAlunoPeloSeuCodigo(codigoAluno);
+      status = 200;
+    }
+
+    res.status(status).json(retorno);
   }
 
   async salvarEmprestimo(req, res){
-    let retorno = "Aluno ou publicação inexistente!"; //Mensagem padrão caso falhe o 1º IF
+    let retorno = "Aluno ou livro inexistente!"; //Mensagem padrão caso falhe o 1º IF
     let status = 400; //Status padrão caso falhe qualquer um dos IF's
 
     const emprestimo = req.body;
 
-    const codigoAluno = emprestimo.codigo_aluno;
-    const codigoPublicacao = emprestimo.codigo_publicacao;
+    const codigoAluno = emprestimo.fk_codigo_aluno;
+    const codigoLivro = emprestimo.fk_codigo_livro;
 
     const aluno = await AlunoRepository.buscarAlunoPeloCodigo(codigoAluno);
-    const publicacao = await PublicacaoRepository.buscarPublicacaoPorCodigo(codigoPublicacao);
+    const livro = await LivroRepository.buscarLivroPorCodigo(codigoLivro);
     
-    if(publicacao.length && aluno.length){ //Verifica se o aluno e publicação existem
-      const quantidadeExemplares = publicacao[0].quantidade_exemplares;
+    if(livro.length && aluno.length){ //Verifica se o aluno e livro existem
+      const quantidadeExemplares = livro[0].quantidade_exemplares;
       
-      if(quantidadeExemplares > 0){ //Verifica se a publicação possui ao menos 1 exemplar disponível
-        const resultado = await EmprestimoRepository.buscarSeCertoAlunoEstaComAPosseDeCertaPublicacaoPeloCodigoDoAlunoEDaPublicacao(codigoAluno, codigoPublicacao);
+      if(quantidadeExemplares > 0){ //Verifica se o livro possui ao menos 1 exemplar disponível
+        const resultado = await EmprestimoRepository.buscarSeCertoAlunoEstaComAPosseDeCertoLivroPeloCodigoDoAlunoEDoLivro(codigoAluno, codigoLivro);
         const quantidadeDeEmprestimosIguaisNaoDevolvidos = resultado[0].quantidade;
         
         if(quantidadeDeEmprestimosIguaisNaoDevolvidos == 0){ //Verifica se o aluno já não possui tal publicação em mãos. Se não possui, é apto para o empréstimo
           await EmprestimoRepository.salvarUmEmprestimo(emprestimo);
-          await PublicacaoRepository.atualizarQuantidadeDeExemplaresDaPublicacao((quantidadeExemplares - 1), codigoPublicacao);// Diminui 1 na qauntidade de exemplares do livro
+          await LivroRepository.atualizarQuantidadeDeExemplaresDoLivro((quantidadeExemplares - 1), codigoLivro);// Diminui 1 na qauntidade de exemplares do livro
           
           retorno = "Emprestado com sucesso!";
           status = 201;
@@ -57,20 +67,20 @@ class EmprestimoController{
 
     const devolucao = req.body;
 
-    const codigoAluno = devolucao.codigo_aluno;
-    const codigoPublicacao = devolucao.codigo_publicacao;
-    const codigoEmprestimoNaoDevolvido = await EmprestimoRepository.buscarCodigoDeUmEmprestimoNaoDevolvidoPeloCodigoDoAlunoEPublicacao(codigoAluno, codigoPublicacao);
-
+    const codigoAluno = devolucao.fk_codigo_aluno;
+    const codigoLivro = devolucao.fk_codigo_livro;
+    const codigoEmprestimoNaoDevolvido = await EmprestimoRepository.buscarCodigoDeUmEmprestimoNaoDevolvidoPeloCodigoDoAlunoELivro(codigoAluno, codigoLivro);
+    
     if(codigoEmprestimoNaoDevolvido.length){ //Verifica se o empretimo não devolvido realmente existe
       const codigoEmprestimo = codigoEmprestimoNaoDevolvido[0].codigo_emprestimo;
       const aluno = await AlunoRepository.buscarAlunoPeloCodigo(codigoAluno);
-      const publicacao = await PublicacaoRepository.buscarPublicacaoPorCodigo(codigoPublicacao);
+      const livro = await LivroRepository.buscarLivroPorCodigo(codigoLivro);
 
-      if(aluno.length && publicacao.length){ //Verifica se o aluno e publicação ainda existem
+      if(aluno.length && livro.length){ //Verifica se o aluno e livro ainda existem
         const pontuacaoAluno = aluno[0].pontuacao;
-        const quantidadeExemplares = publicacao[0].quantidade_exemplares;
+        const quantidadeExemplares = livro[0].quantidade_exemplares;
 
-        await PublicacaoRepository.atualizarQuantidadeDeExemplaresDaPublicacao((quantidadeExemplares + 1), codigoPublicacao); //Devolve 1 exemplar para o estoque
+        await LivroRepository.atualizarQuantidadeDeExemplaresDoLivro((quantidadeExemplares + 1), codigoLivro); //Devolve 1 exemplar para o estoque
         await AlunoRepository.atualizarPontuacaoDoAluno((pontuacaoAluno + 1), codigoAluno); //Aumenta pontuação do aluno
         await EmprestimoRepository.atualizarEmprestimoComoDevolvido(codigoEmprestimo); //Altera empréstimo para devolvido = true
 

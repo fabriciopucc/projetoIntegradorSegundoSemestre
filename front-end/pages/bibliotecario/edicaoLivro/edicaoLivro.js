@@ -1,15 +1,17 @@
 window.onload = () => {
-  buscarLivroPorCodigo(localStorage.getItem("codigoLivro"));
   carregarTemplates();
+  buscarLivroPorCodigo(localStorage.getItem("codigoLivro"));
 }
 
 const buscarLivroPorCodigo = (codigo) => {
   $.ajax({
     method: "GET",
-    url: "http://localhost:3000/publicacoes/".concat(codigo),
+    url: "http://localhost:3000/livros/".concat(codigo),
   }).done(function (dados) {
+    $("#cardLoader").addClass("desativado");
     setarValoresNoFormulario(dados[0]);
   }).fail(function (err)  {
+    $("#cardLoader").addClass("desativado");
     exibirMessageBox(err, "Entendido", false);
   });
 }
@@ -39,17 +41,22 @@ const enviarFormularioEditarLivro = () => {
     quantidade_exemplares: $("#quantidade_exemplares").val()
   };
 
-  if(validarFormularioCadastrarLivro(livro)){
+  console.log(livro);
+
+  if(validarFormularioCadastrarLivro(livro)){    
+    exibirCardLoader();
     $.ajax({
       method: "PUT",
-      url: "http://localhost:3000/publicacoes/".concat(localStorage.getItem("codigoLivro")),
+      url: "http://localhost:3000/livros/".concat(localStorage.getItem("codigoLivro")),
       contentType : 'application/json',
       dataType : 'json',
       data: JSON.stringify(livro)
-    }).done(function () {
-      exibirMessageBox("Livro editado com sucesso!", "Prosseguir", true, "../informacoesLivro/informacoesLivro.html");
-    }).fail(function (err)  {
-      exibirMessageBox(err, "Entendido", false);
+    }).done(function (dados) {
+      esconderCardLoader();
+      exibirMessageBox(dados, "Prosseguir", true, "../informacoesLivro/informacoesLivro.html");
+    }).fail(function (erro)  {
+      esconderCardLoader();
+      exibirMessageBox(erro.responseJSON, "Entendido", false);
     });
   }
 }

@@ -52,7 +52,7 @@ const validarFormularioCadastrarLivro = (livro) => {
 }
 
 const validarFormularioRetirarLivro = (emprestimo) => {
-  if(emprestimo.codigo_aluno !== "escolha" && emprestimo.codigo_publicacao !== "escolha"){
+  if(emprestimo.fk_codigo_aluno !== "escolha" && emprestimo.fk_codigo_livro && emprestimo.fk_codigo_livro !== "escolha"){
     return true;
   }else{
     exibirMessageBox("Preencha todos os dados obrigatórios!", "Entendido", false);
@@ -61,7 +61,7 @@ const validarFormularioRetirarLivro = (emprestimo) => {
 }
 
 const validarFormularioDevolverLivro = (devolucao) => {
-  if(devolucao.codigo_aluno !== "escolha" && devolucao.codigo_publicacao !== "escolha"){
+  if(devolucao.fk_codigo_aluno !== "escolha" && devolucao.fk_codigo_livro && devolucao.fk_codigo_livro !== "escolha"){
     return true;
   }else{
     exibirMessageBox("Preencha todos os dados obrigatórios!", "Entendido", false);

@@ -10,15 +10,11 @@ const buscarAlunoPeloRA = () => {
       method: "GET",
       url: "http://localhost:3000/alunos/ra/".concat(ra),
     }).done(function (dados) {
-      if(dados.length){
-        buscarLivros();
-        $("#codigoAluno").val(dados[0].codigo);
-        $("#codigoLivro").attr("disabled", false);
-      }else{
-        exibirMessageBox("Não existe nenhum aluno com este RA!", "Entendido", false);
-      }
-    }).fail(function (err)  {
-      exibirMessageBox(mensagem, "Entendido", false);
+      buscarLivros();
+      $("#codigoAluno").val(dados[0].codigo);
+      $("#codigoLivro").attr("disabled", false);
+    }).fail(function (erro)  {
+      exibirMessageBox(erro.responseJSON, "Entendido", false);
     });
   }else{
     exibirMessageBox("Digite o RA corretamente!!", "Entendido", false)
@@ -28,39 +24,46 @@ const buscarAlunoPeloRA = () => {
 const buscarLivros = () => {
   $.ajax({
     method: "GET",
-    url: "http://localhost:3000/publicacoes/disponiveis",
+    url: "http://localhost:3000/livros/disponiveis",
   }).done(function (dados) {
     gerarSelectDeLivros(dados);
-  }).fail(function (err)  {
-    exibirMessageBox(mensagem, "Entendido", false);
+  }).fail(function (erro)  {
+    exibirMessageBox(erro.responseJSON, "Entendido", false);
   });
 }
 
 const gerarSelectDeLivros = (livros) => {
-  $("#codigoLivro").empty().append(
-    "<option value='escolha'>Escolha</option>"
-  );
+  $("#codigoLivro").empty();
+  $("#mensagemAlternativa").text("");
 
-  livros.map((livro) => {
+  if(livros.length){
     $("#codigoLivro").append(
-      "<option value="+livro.codigo+">"+livro.titulo+" - "+livro.quantidade_exemplares+" disponíveis</option>"
+      "<option value='escolha'>Escolha</option>"
     );
-  })
+
+    livros.map((livro) => {
+      $("#codigoLivro").append(
+        "<option value="+livro.codigo+">"+livro.titulo+" - "+livro.quantidade_exemplares+" disponíveis</option>"
+      );
+    });
+  }else{
+    $("#mensagemAlternativa").text("Não existe nenhum livro com exemplares disponíveis no momento!");
+  }
 }
 
 const enviaRFormularioRetirarLivro = () => {
-  const dataAtualNoBrasil = new Date().toISOString();
-  console.log(dataAtualNoBrasil)
-
+  const dataEHoraNoBrasil = new Date().toLocaleString('pt-BR', {timeZone: 'America/Sao_Paulo'}).replace(",", "");
+  
   const emprestimo = {
-    data_emprestimo: "2023/12/10 14:30:00",//dataAtualNoBrasil,
-    codigo_aluno: $("#codigoAluno").val(),
-    codigo_publicacao: $("#codigoLivro").val(),
+    data_emprestimo: dataEHoraNoBrasil,
+    fk_codigo_aluno: $("#codigoAluno").val(),
+    fk_codigo_livro: $("#codigoLivro").val(),
     devolvido: false 
   };
 
   if(validarFormularioRetirarLivro(emprestimo)){
-    console.log(emprestimo);
+    exibirCardLoader();
+
     $.ajax({
       method: "POST",
       url: "http://localhost:3000/emprestimos",
@@ -68,8 +71,11 @@ const enviaRFormularioRetirarLivro = () => {
       dataType : 'json',
       data: JSON.stringify(emprestimo)
     }).done(function (dados) {
+      esconderCardLoader();
       exibirMessageBox(dados, "Prosseguir", true, "../paginaDoTotem/paginaDoTotem.html");
+      $("#cardLoader").removeClass("ativo");
     }).fail(function (erro)  {
+      esconderCardLoader();
       exibirMessageBox(erro.responseJSON, "Entendido", false);
     });
   }

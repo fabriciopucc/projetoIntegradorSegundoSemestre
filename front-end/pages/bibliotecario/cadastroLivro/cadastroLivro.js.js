@@ -16,18 +16,20 @@ const enviarFormularioCadastrarLivro = () => {
   };
 
   if(validarFormularioCadastrarLivro(livro)){
+    exibirCardLoader();
     $.ajax({
       method: "POST",
-      url: "http://localhost:3000/publicacoes",
+      url: "http://localhost:3000/livros",
       contentType : 'application/json',
       dataType : 'json',
       data: JSON.stringify(livro)
-    }).done(function () {
+    }).done(function (dados) {
+      esconderCardLoader();
       limparInputsDeUmFormulario("formularioCadastrarLivro");
-      exibirMessageBox("Livro cadastrado com sucesso!", "Prosseguir", true, "../paginaDoBibliotecario/pagindaDoBibliotecario.html");
-    }).fail(function (err)  {
-      let mensagem = err.responseText.split("<pre>")[1].replace("</pre>", "").replace("</body>", "").replace("</html>", "");
-      exibirMessageBox(mensagem, "Entendido", false);
+      exibirMessageBox(dados, "Prosseguir", true, "../paginaDoBibliotecario/pagindaDoBibliotecario.html");
+    }).fail(function (erro)  {
+      esconderCardLoader();
+      exibirMessageBox(erro.responseJSON, "Entendido", false);
     });
   }
 }

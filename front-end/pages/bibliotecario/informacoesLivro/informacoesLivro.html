@@ -24,6 +24,15 @@
   <body>
     <div id="carregarMessageBox"></div>
 
+    <div class="containerCardLoader" id="cardLoader">
+      <div class="cardLoader">
+        <img 
+          src="../../../assets/gifs/loading.gif" 
+          alt="Gif loading"
+        >
+      </div>
+    </div>
+
     <header class="cabecalho">
       <div class="margemCabecalho">
         <a href="../gestaoDeLivros/gestaoDeLivros.html">
@@ -75,7 +84,10 @@
                   Editar
                 </button>
 
-                <button>
+                <button
+                  type="button"
+                  onclick="excluirLivroPorCodigo()"
+                >
                   Excluir
                 </button>
               </div>

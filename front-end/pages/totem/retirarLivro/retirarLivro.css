@@ -22,3 +22,9 @@
 .iconPesquisar{
   width: 20px;
 }
+
+.mensagemAlternativa{
+  width: 100%;
+  text-align: center;
+  margin: 0;
+}

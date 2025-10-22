@@ -1,4 +1,5 @@
 window.onload = () => {
+  carregarTemplates();
   buscarAlunoPorCodigo(localStorage.getItem('codigoAluno'));
 }
 
@@ -7,9 +8,11 @@ const buscarAlunoPorCodigo = (codigo) => {
     method: "GET",
     url: "http://localhost:3000/alunos/".concat(codigo),
   }).done(function (dados) {
+    $("#cardLoader").addClass("desativado");
     carregarAluno(dados[0]);
-  }).fail(function (err)  {
-    exibirMessageBox(mensagem, "Entendido", false);
+  }).fail(function (erro)  {
+    $("#cardLoader").addClass("desativado");
+    exibirMessageBox(erro.responseJSON, "Entendido", false);
   });
 }
 

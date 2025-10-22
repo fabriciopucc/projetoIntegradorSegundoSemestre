@@ -1,14 +1,14 @@
 import { consulta } from "../database/conexao.js";
 
-class EmprestimoRepository{
+class EmprestimoRepository{pub
 
-  listaREmprestimos(){
+  listarEmprestimos(){
     const query = "select * from emprestimos";
     return consulta(query, "Não foi possível executar a consulta!");
   }
 
   listarLivrosNaoDevolvidosDeUmAlunoPeloSeuCodigo(codigoAluno){
-    const query = "select p.codigo as codigo, p.titulo as titulo from alunos a  inner join emprestimos e on a.codigo = e.codigo_aluno inner join publicacoes p on p.codigo = e.codigo_publicacao where a.codigo = ? and e.devolvido = false";
+    const query = "select l.codigo as codigo, l.titulo as titulo from alunos a  inner join emprestimos e on a.codigo = e.fk_codigo_aluno inner join livros l on l.codigo = e.fk_codigo_livro where a.codigo = ? and e.devolvido = false";
     return consulta(query, codigoAluno, "Não foi possível executar a consulta!");
   }
 
@@ -17,14 +17,14 @@ class EmprestimoRepository{
     return consulta(query, codigo, "Não foi possível executar a consulta!");
   }
 
-  buscarCodigoDeUmEmprestimoNaoDevolvidoPeloCodigoDoAlunoEPublicacao(codigoAluno, codigoPublicacao){
-    const query = "select e.codigo as codigo_emprestimo from alunos a inner join emprestimos e on a.codigo = e.codigo_aluno inner join publicacoes p on p.codigo = e.codigo_publicacao where a.codigo = ? and p.codigo = ? and e.devolvido = false limit 1;";
-    return consulta(query, [codigoAluno, codigoPublicacao], "Não foi possível executar a consulta!");
+  buscarCodigoDeUmEmprestimoNaoDevolvidoPeloCodigoDoAlunoELivro(codigoAluno, codigoLivro){
+    const query = "select e.codigo as codigo_emprestimo from alunos a inner join emprestimos e on a.codigo = e.fk_codigo_aluno inner join livros l on l.codigo = e.fk_codigo_livro where a.codigo = ? and l.codigo = ? and e.devolvido = false limit 1;";
+    return consulta(query, [codigoAluno, codigoLivro], "Não foi possível executar a consulta!");
   }
 
-  buscarSeCertoAlunoEstaComAPosseDeCertaPublicacaoPeloCodigoDoAlunoEDaPublicacao(codigoAluno, codigoPublicacao){
-    const query = "select count(p.codigo) as quantidade from alunos a inner join emprestimos e on a.codigo = e.codigo_aluno inner join publicacoes p on p.codigo = e.codigo_publicacao where a.codigo = ? and p.codigo = ? and e.devolvido = false;"
-    return consulta(query, [codigoAluno, codigoPublicacao], "Não foi possível executar a consulta!");
+  buscarSeCertoAlunoEstaComAPosseDeCertoLivroPeloCodigoDoAlunoEDoLivro(codigoAluno, codigoLivro){
+    const query = "select count(l.codigo) as quantidade from alunos a inner join emprestimos e on a.codigo = e.fk_codigo_aluno inner join livros l on l.codigo = e.fk_codigo_livro where a.codigo = ? and l.codigo = ? and e.devolvido = false;"
+    return consulta(query, [codigoAluno, codigoLivro], "Não foi possível executar a consulta!");
   }
 
   salvarUmEmprestimo(emprestimo){

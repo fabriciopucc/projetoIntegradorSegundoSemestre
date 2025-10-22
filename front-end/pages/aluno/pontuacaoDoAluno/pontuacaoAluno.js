@@ -2,44 +2,18 @@ window.onload = () => {
   carregarTemplates();
 }
 
-const enviarFormularioCadastrarAluno = () => {
-  const aluno = {
-    ra: $("#ra").val(),
-    nome: $("#nome").val(),
-    cpf: $("#cpf").val(),
-    celular: $("#celular").val()
-  }
-
-  if(validarFormularioCadastrarAluno(aluno)){
-    $.ajax({
-      method: "POST",
-      url: "http://localhost:3000/alunos",
-      contentType : 'application/json',
-      dataType : 'json',
-      data: JSON.stringify(aluno)
-    }).done(function () {
-      limparInputsDeUmFormulario("formularioCadastrarAluno");
-      exibirMessageBox("Aluno cadastrado com sucesso!", "Prosseguir", true);
-    }).fail(function (err)  {
-      let mensagem = err.responseText.split("<pre>")[1].replace("</pre>", "").replace("</body>", "").replace("</html>", "");
-      exibirMessageBox(mensagem, "Entendido", false);
-    });
-  }
-}
-
 const buscarAlunoPeloRA = (ra) => {
   if(ra.length == 8){
+    exibirCardLoader();
     $.ajax({
       method: "GET",
       url: "http://localhost:3000/alunos/ra/".concat(ra),
     }).done(function (dados) {
-      if(dados.length){
-         carregarAluno(dados[0]);
-      }else{
-        exibirMessageBox("Não existe nenhum aluno com este RA!", "Entendido", false);
-      }
-    }).fail(function (err)  {
-      exibirMessageBox(mensagem, "Entendido", false);
+      esconderCardLoader();
+      carregarAluno(dados[0]);
+    }).fail(function (erro)  {
+      esconderCardLoader();
+      exibirMessageBox(erro.responseJSON, "Entendido", false);
     });
   }else{
     exibirMessageBox("Digite o RA corretamente!!", "Entendido", false)

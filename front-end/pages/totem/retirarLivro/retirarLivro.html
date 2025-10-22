@@ -13,6 +13,7 @@
     <script src="../../../js/carregarTemplates.js"></script>
     <script src="../../../js/messageBox.js"></script>
     <script src="../../../js/validacoesDeFormularios.js"></script>
+    <script src="../../../js/cardLoader.js"></script>
     <script src="./retirarLivro.js"></script>
 
     <script
@@ -24,6 +25,7 @@
 
   <body>
     <div id="carregarMessageBox"></div>
+    <div id="carregarCardLoader"></div>
 
     <header class="cabecalho">
       <div class="margemCabecalho">
@@ -79,6 +81,8 @@
           >
             <option value="escolha">Digite o RA do aluno primeiro</option>
           </select>
+
+          <p id="mensagemAlternativa" class="mensagemAlternativa"></p>
 
           <button 
             type="button"

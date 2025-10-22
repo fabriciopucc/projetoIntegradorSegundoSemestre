@@ -14,6 +14,7 @@
     <script src="../../../js/messageBox.js"></script>
     <script src="../../../js/validacoesDeFormularios.js"></script>
     <script src="../../../js/utils.js"></script>
+    <script src="../../../js/cardLoader.js"></script>
     <script src="./edicaoLivro.js"></script>
 
     <script
@@ -25,6 +26,16 @@
 
   <body>
     <div id="carregarMessageBox"></div>
+    <div id="carregarCardLoader"></div>
+
+    <div class="containerCardLoader" id="cardLoader">
+      <div class="cardLoader">
+        <img 
+          src="../../../assets/gifs/loading.gif" 
+          alt="Gif loading"
+        >
+      </div>
+    </div>
 
     <header class="cabecalho">
       <div class="margemCabecalho">
@@ -153,7 +164,7 @@
             type="button"
             onclick="enviarFormularioEditarLivro()"
           >
-            Cadastrar
+            Editar
           </button>
         </form>
       </div>  

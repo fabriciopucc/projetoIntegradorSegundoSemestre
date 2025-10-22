@@ -22,6 +22,16 @@ class AlunoRepository{
     return consulta(query, ra, "Aluno inexistente");
   }
 
+  buscarAlunoPeloCPF(cpf){
+    const query = "select * from alunos where cpf = ?";
+    return consulta(query, cpf, "Aluno inexistente");
+  }
+
+  buscarAlunoPeloRA(ra){
+    const query = "select * from alunos where ra = ?";
+    return consulta(query, ra, "Aluno inexistente");
+  }
+
   salvarAluno(aluno){
     const query = "insert into alunos set ?;";
     return consulta(query, aluno, 'Não foi possível salvar!');

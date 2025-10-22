@@ -4,8 +4,8 @@ import express from 'express';
 import cors from 'cors';
 
 //Routers
-import alunoRouter from './src/routes/AlunoRouter.js';
-import publicacaoRouter from './src/routes/PublicacaoRouter.js';
+import alunoRouter from './src/routes/alunoRouter.js';
+import livroRouter from './src/routes/livroRouter.js';
 import emprestimoRouter from './src/routes/emprestimoRouter.js';
 
 const app = express();
@@ -23,5 +23,5 @@ app.use(cors({
 
 //Rotas
 app.use("/alunos", alunoRouter);
-app.use("/publicacoes", publicacaoRouter);
+app.use("/livros", livroRouter);
 app.use("/emprestimos", emprestimoRouter);

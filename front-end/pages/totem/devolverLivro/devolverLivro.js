@@ -10,14 +10,10 @@ const buscarAlunoPeloRA = () => {
       method: "GET",
       url: "http://localhost:3000/alunos/ra/".concat(ra),
     }).done(function (dados) {
-      if(dados.length){
-        buscarLivrosDeUmAluno(dados[0].codigo);
-        $("#codigoAluno").val(dados[0].codigo);
-      }else{
-        exibirMessageBox("Não existe nenhum aluno com este RA!", "Entendido", false);
-      }
-    }).fail(function (err)  {
-      exibirMessageBox(mensagem, "Entendido", false);
+      buscarLivrosDeUmAluno(dados[0].codigo);
+      $("#codigoAluno").val(dados[0].codigo);
+    }).fail(function (erro)  {
+      exibirMessageBox(erro.responseJSON, "Entendido", false);
     });
   }else{
     exibirMessageBox("Digite o RA corretamente!!", "Entendido", false)
@@ -30,8 +26,8 @@ const buscarLivrosDeUmAluno = (codigoAluno) => {
     url: "http://localhost:3000/emprestimos/".concat(codigoAluno),
   }).done(function (dados) {
     gerarSelectDeLivros(dados);
-  }).fail(function (err)  {
-    exibirMessageBox(mensagem, "Entendido", false);
+  }).fail(function (erro)  {
+    exibirMessageBox(erro.responseJSON, "Entendido", false);
   });
 }
 
@@ -40,7 +36,7 @@ const gerarSelectDeLivros = (livros) => {
   $("#mensagemAlternativa").text("");
 
   if(livros.length){
-     $("#codigoLivro").attr("disabled", false);
+    $("#codigoLivro").attr("disabled", false);
 
     $("#codigoLivro").append(
       "<option value='escolha'>Escolha</option>"
@@ -50,23 +46,25 @@ const gerarSelectDeLivros = (livros) => {
       $("#codigoLivro").append(
         "<option value="+livro.codigo+">"+livro.titulo+"</option>"
       );
-    })
+    });
   }
   else{
-    $("#mensagemAlternativa").text("Este alluno não possui nenhum livro emprestado!");
+    $("#mensagemAlternativa").text("Este aluno não possui nenhum livro emprestado!");
   }
 }
 
-const enviaRFormularioRetirarLivro = () => {
+const enviarFormularioDevolverLivro = () => {
+  const dataEHoraNoBrasil = new Date().toLocaleString('pt-BR', {timeZone: 'America/Sao_Paulo'}).replace(",", "");
+
   const devolucao = {
-    //data_emprestimo: "2023/12/10 14:30:00",//dataAtualNoBrasil,
-    codigo_aluno: $("#codigoAluno").val(),
-    codigo_publicacao: $("#codigoLivro").val(),
-    //devolvido: false 
+    fk_codigo_aluno: $("#codigoAluno").val(),
+    fk_codigo_livro: $("#codigoLivro").val(), 
+    data_devolucao: dataEHoraNoBrasil,
   };
 
   if(validarFormularioDevolverLivro(devolucao)){
-    console.log(devolucao);
+     exibirCardLoader();
+    
     $.ajax({
       method: "PUT",
       url: "http://localhost:3000/emprestimos",
@@ -74,8 +72,10 @@ const enviaRFormularioRetirarLivro = () => {
       dataType : 'json',
       data: JSON.stringify(devolucao)
     }).done(function (dados) {
+      esconderCardLoader();
       exibirMessageBox(dados, "Prosseguir", true, "../paginaDoTotem/paginaDoTotem.html");
     }).fail(function (erro)  {
+      esconderCardLoader();
       exibirMessageBox(erro.responseJSON, "Entendido", false);
     });
   }

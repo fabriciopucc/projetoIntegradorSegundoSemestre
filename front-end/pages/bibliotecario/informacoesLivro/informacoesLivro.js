@@ -1,15 +1,18 @@
 window.onload = () => {
+  carregarTemplates();
   buscarLivroPorCodigo(localStorage.getItem("codigoLivro"));
 }
 
 const buscarLivroPorCodigo = (codigo) => {
   $.ajax({
     method: "GET",
-    url: "http://localhost:3000/publicacoes/".concat(codigo),
+    url: "http://localhost:3000/livros/".concat(codigo),
   }).done(function (dados) {
+    $("#cardLoader").addClass("desativado");
     carregarLivro(dados[0]);
-  }).fail(function (err)  {
-    exibirMessageBox(err, "Entendido", false);
+  }).fail(function (erro)  {
+    $("#cardLoader").addClass("desativado");
+    exibirMessageBox(erro, "Entendido", false);
   });
 }
 
@@ -27,4 +30,15 @@ const carregarLivro = (livro) => {
 const redirecionarParaEdicaoDoLivro = () => {
   localStorage.setItem("codigoLivro", localStorage.getItem("codigoLivro"));
   location.href="../edicaoLivro/edicaoLivro.html";
+}
+
+const excluirLivroPorCodigo = () => {
+  $.ajax({
+    method: "DELETE",
+    url: "http://localhost:3000/livros/".concat(localStorage.getItem("codigoLivro")),
+  }).done(function (dados) {
+    exibirMessageBox(dados, "Prosseguir", true, "../gestaoDeLivros/gestaoDeLivros.html");
+  }).fail(function (erro)  {
+    exibirMessageBox(erro.responseJSON, "Entendido", false);
+  });
 }
