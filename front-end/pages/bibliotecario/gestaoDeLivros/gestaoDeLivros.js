@@ -47,7 +47,7 @@ const carregarLivros = (livros) => {
           "</div>"+
         "</div>"
       );
-    })
+    });
   }
   else{
      $("#containerLivros").append("<h1 class='aviso centralizarAviso'>Sem registros</h1>")

@@ -1,3 +1,21 @@
+.botoesGestaoLivros{
+  width: 100%;
+}
+
+.linkBotaoCadastrar{
+  width: 150px;
+  height: 40px;
+  font-size: 15px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  color: #fff;
+  background-color: var(--primaria);
+  cursor: pointer;
+}
+
 .containerLivros{
   width: 100%;
   min-height: 90vh;
@@ -28,25 +46,90 @@
 
 .livro{
   width: calc(23.5% - 4px);
-  min-height: 300px;
-  background-color: var(--inputs);
   border-radius: 10px;
-  border: 2px solid var(--bordas);
   margin:0 0 25px 2%;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px #4571f32b, 0 6px 12px #4571f332;
+  background-color: var(--card);
 }
 
 .livro:nth-child(4n + 1){
   margin-left: 0;
 }
 
-.livro h1{
-  font-size: 25px;
+.margemLivro{
+  width: 95%;
+  margin: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-@media screen and (max-width: 1100px) {
+.quantidadeDisponiveis{
+  width: 100%;
+  display: flex;
+  justify-content: right;
+}
+
+.valorQuantidadeDisponiveis{
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 2.5px 0 0;
+  color: var(--titulos);
+}
+
+.iconCorreto{
+  filter: brightness(40%);
+  width: 20px;
+}
+
+.tituloLivro{
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.sinopseLivro{
+  width: 100%;
+  background-color: var(--contraste);
+  padding: 10px;
+  border-radius: 10px;
+  margin: 0;
+}
+
+.autorLivro, .anoLivro{
+  width: 100%;
+  text-align: left;
+  margin: 0;
+}
+
+.autorLivro{margin-top: 15px;}
+.anoLivro{margin-bottom: 15px;}
+
+.autorLivro::before {
+  content: "Autor:";
+  color: var(--titulos); 
+  margin-right: 8px; 
+  font-weight: bold;
+}
+
+.anoLivro::before {
+  content: "Ano:";
+  color: var(--titulos);  
+  margin-right: 8px; 
+  font-weight: bold;
+}
+
+.botaoDetalhesLivro{
+  width: fit-content;
+}
+
+@media screen and (max-width: 1250px) {
   .livro, .livro:nth-child(4n + 1){
     width: calc(32% - 4px);
     margin:0 0 25px 2%;
@@ -57,7 +140,7 @@
   }
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 850px) {
   .containerLivros{
     justify-content: space-between;
   }
@@ -68,7 +151,7 @@
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   .livro, .livro:nth-child(4n + 1), .livro:nth-child(3n + 1){
     width: 100%
   }

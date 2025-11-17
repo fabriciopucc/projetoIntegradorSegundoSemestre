@@ -9,11 +9,11 @@ const local = {
 }
 
 const servidor = {
-  host: "gondola.proxy.rlwy.net",
+  host: "shinkansen.proxy.rlwy.net",
   user: "root",
-  password: "mwtmeHDLhsylqJfRGoIKhfqgXvBlsekt",
+  password: "thktKdsrxZFGCczKuBDdXrexFDoAkbQU",
   database: "railway",
-  port: "46786"
+  port: "16233"
 }
 
 let seraLocal = false;
