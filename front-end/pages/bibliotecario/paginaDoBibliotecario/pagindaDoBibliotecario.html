@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="../../../assets/css/templates.css">
     <link rel="stylesheet" href="./paginaDoBibliotecario.css">
 
+    <script src="../../../js/tema.js"></script>
+    <script src="../../../js/carregarTemplates.js"></script>
+    <script src="./paginaDoBibliotecario.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.6.1.min.js"
       integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
@@ -24,8 +27,9 @@
 
     <nav class="menuBar">
       <div class="margemMenuBar">
-        <h1>Página do bibliotecário</h1>
         <div class="opcoes">
+          <h1>Página do bibliotecário</h1>
+
           <a class="opcaoMenuBar" href="../cadastroLivro/cadastroLivro.html">
             <img 
               src="../../../assets/icons/cadastroLivro.png" 
@@ -52,6 +56,22 @@
             >
             <p>Ranking de alunos</p>
           </a>
+        </div>
+
+        <div class="trocarTema" onclick="alterarTema()">
+          <img 
+            src="../../../assets/images/sol.png" 
+            alt=""
+            class="iconTrocarTema"  
+          >
+
+          <img 
+            src="../../../assets/images/lua.png" 
+            alt=""
+            class="iconTrocarTema"  
+          >
+
+          <div class="circulo" id="circulo"></div>
         </div>
       </div>
     </nav>
@@ -102,6 +122,6 @@
       </div>  
     </main>
 
-    <footer class="rodape"></footer>
+    <div id="carregarFooter"></div>
   </body>
 </html>

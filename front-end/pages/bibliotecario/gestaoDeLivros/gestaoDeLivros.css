@@ -16,6 +16,10 @@
   cursor: pointer;
 }
 
+.linkBotaoCadastrar:hover{
+  filter: brightness(90%);
+}
+
 .containerLivros{
   width: 100%;
   min-height: 90vh;

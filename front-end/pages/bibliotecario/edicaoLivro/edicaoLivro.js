@@ -1,4 +1,5 @@
 window.onload = () => {
+  carregarTema();
   carregarTemplates();
   buscarLivroPorCodigo(localStorage.getItem("codigoLivro"));
 }

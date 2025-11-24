@@ -1,4 +1,5 @@
 window.onload = () => {
+  carregarTema();
   listarLivros();
   carregarTemplates();
 }

@@ -32,13 +32,11 @@
 .iconCabecalho{
   cursor: pointer;
   width: 30px;
+  filter: brightness(35%);
 }
 
-.links{
-}
-
-.links a{
-  margin-left: 20px;
+.margemCabecalho h1{
+  margin-left: -30px;
 }
 
 /*MebuBar*/
@@ -82,6 +80,11 @@
 
 .margemMenuBar{
   width: 90%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
   margin: 30px 0;
 }
 
@@ -122,6 +125,38 @@
   color: #fff;
   margin: 0 10px;
   font-size: 15px;
+}
+
+.trocarTema{
+  position: relative;
+  width: 90px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #fff;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.iconTrocarTema{
+  width: 25px;
+  height: 25px;
+}
+
+.circulo{
+  position: absolute;
+  background-color:var(--primaria);
+  border-radius: 50%;
+  left: 2px;
+  top: 3px;
+  height: 35px;
+  width: 35px;
+  transition: transform 0.25s linear;
+}
+
+.escuro{
+  transform: translateX(50px);
 }
 
 /*Container*/
@@ -169,7 +204,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #fff;
+  background-color: var(--card);
   border-radius: 10px;
 }
 

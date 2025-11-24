@@ -1,4 +1,5 @@
 window.onload = () => {
+  carregarTema();
   carregarTemplates();
 }
 
@@ -6,13 +7,17 @@ const buscarAlunoPeloRA = () => {
   const ra = $("#raAluno").val();
   
   if(ra.length == 8){
+    exibirCardLoader();
+
     $.ajax({
       method: "GET",
       url: "http://localhost:3000/alunos/ra/".concat(ra),
     }).done(function (dados) {
+      esconderCardLoader();
       buscarLivrosDeUmAluno(dados[0].codigo);
       $("#codigoAluno").val(dados[0].codigo);
     }).fail(function (erro)  {
+      esconderCardLoader();
       exibirMessageBox(erro.responseJSON, "Entendido", false);
     });
   }else{

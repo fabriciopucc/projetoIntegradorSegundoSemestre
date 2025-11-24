@@ -1,3 +1,21 @@
+.linkBotaoVoltar{
+  width: 200px;
+  height: 40px;
+  font-size: 15px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  color: #fff;
+  background-color: var(--primaria);
+  cursor: pointer;
+}
+
+.linkBotaoVoltar:hover{
+  filter: brightness(90%);
+}
+
 .containerOpcoes{
   width: 100%;
   min-height: inherit;
@@ -70,6 +88,10 @@
 }
 
 @media screen and (max-width: 900px) {
+  .linkBotaoVoltar{
+    margin-bottom: 30px;
+  }
+
   .containerOpcoes{
     justify-content: space-between;
     align-items:initial;

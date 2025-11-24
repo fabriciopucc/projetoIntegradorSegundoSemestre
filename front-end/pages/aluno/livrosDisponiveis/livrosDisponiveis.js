@@ -1,4 +1,5 @@
 window.onload = () => {
+  carregarTema();
   listarLivros();
   carregarTemplates();
 }
@@ -52,4 +53,10 @@ const carregarLivros = (livros) => {
   else{
      $("#containerLivros").append("<h1 class='aviso centralizarAviso'>Sem registros</h1>")
   }
+}
+
+
+const redirecionarParaInformacoesDoLivro = (codigoLivro) => {
+  localStorage.setItem("codigoLivro", codigoLivro);
+  location.href="../informacoesLivro/informacoesLivro.html";
 }

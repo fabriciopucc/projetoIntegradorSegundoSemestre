@@ -3,12 +3,17 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color">    
 
     <title>Página do aluno</title>
 
     <link rel="stylesheet" href="../../../assets/css/padroesGerais.css">
     <link rel="stylesheet" href="../../../assets/css/templates.css">
     <link rel="stylesheet" href="./paginaDoAluno.css">
+
+    <script src="../../../js/carregarTemplates.js"></script>
+    <script src="../../../js/tema.js" defer></script>
+     <script src="./paginaDoAluno.js.js"></script>
 
     <script
       src="https://code.jquery.com/jquery-3.6.1.min.js"
@@ -24,8 +29,9 @@
 
     <nav class="menuBar">
       <div class="margemMenuBar">
-        <h1>Página do aluno</h1>
         <div class="opcoes">
+          <h1>Página do aluno</h1>
+
           <a class="opcaoMenuBar" href="../cadastroAluno/cadastroAluno.html">
             <img 
               src="../../../assets/icons/study.png" 
@@ -52,6 +58,22 @@
             >
             <p>Pontuação do aluno</p>
           </a>
+        </div>
+
+        <div class="trocarTema" onclick="alterarTema()">
+          <img 
+            src="../../../assets/images/sol.png" 
+            alt=""
+            class="iconTrocarTema"  
+          >
+
+          <img 
+            src="../../../assets/images/lua.png" 
+            alt=""
+            class="iconTrocarTema"  
+          >
+
+          <div class="circulo" id="circulo"></div>
         </div>
       </div>
     </nav>
@@ -102,6 +124,6 @@
       </div>  
     </main>
 
-    <footer class="rodape"></footer>
+    <div id="carregarFooter"></div>
   </body>
 </html>

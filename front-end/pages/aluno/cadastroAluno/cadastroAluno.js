@@ -1,4 +1,5 @@
 window.onload = () => {
+  carregarTema();
   carregarTemplates();
 }
 
@@ -11,6 +12,7 @@ const enviarFormularioCadastrarAluno = () => {
   }
 
   if(validarFormularioCadastrarAluno(aluno)){
+    exibirCardLoader();
     $.ajax({
       method: "POST",
       url: "http://localhost:3000/alunos",
@@ -18,9 +20,11 @@ const enviarFormularioCadastrarAluno = () => {
       dataType : 'json',
       data: JSON.stringify(aluno)
     }).done(function (dados) {
+      esconderCardLoader();
       limparInputsDeUmFormulario("formularioCadastrarAluno");
       exibirMessageBox(dados, "Prosseguir", true, "../paginaDoAluno/paginaDoAluno.html");
     }).fail(function (erro)  {
+      esconderCardLoader();
       exibirMessageBox(erro.responseJSON, "Entendido", false);
     });
   }

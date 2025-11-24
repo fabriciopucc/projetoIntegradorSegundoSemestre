@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="../../../assets/css/templates.css">
     <link rel="stylesheet" href="./paginaDoTotem.css">
 
+    <script src="../../../js/tema.js"></script>
+    <script src="../../../js/carregarTemplates.js"></script>
+    <script src="./paginaDoTotem.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.6.1.min.js"
       integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
@@ -24,8 +27,9 @@
 
     <nav class="menuBar">
       <div class="margemMenuBar">
-        <h1>Página do Totem</h1>
         <div class="opcoes">
+          <h1>Página do Totem</h1>
+
           <a class="opcaoMenuBar" href="../retirarLivro/retirarLivro.html">
             <img 
               src="../../../assets/icons/retirar.png" 
@@ -43,6 +47,22 @@
             >
             <p>Devolver livro</p>
           </a>
+        </div>
+
+       <div class="trocarTema" onclick="alterarTema()">
+          <img 
+            src="../../../assets/images/sol.png" 
+            alt=""
+            class="iconTrocarTema"  
+          >
+
+          <img 
+            src="../../../assets/images/lua.png" 
+            alt=""
+            class="iconTrocarTema"  
+          >
+
+          <div class="circulo" id="circulo"></div>
         </div>
       </div>
     </nav>
@@ -65,6 +85,14 @@
 
     <main class="container">
       <div class="margemContainer">
+      
+        <a 
+          href="../../aluno/paginaDoAluno/paginaDoAluno.html"
+          class="linkBotaoVoltar"
+        >
+          Voltar à pagina do aluno
+        </a>
+
         <div class="containerOpcoes">
           <a class="opcao" href="../retirarLivro/retirarLivro.html">
             <div class="margemOpcao">
@@ -85,6 +113,6 @@
       </div>  
     </main>
 
-    <footer class="rodape"></footer>
+    <div id="carregarFooter"></div>
   </body>
 </html>

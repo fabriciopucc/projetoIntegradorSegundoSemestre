@@ -27,19 +27,3 @@ const carregarLivro = (livro) => {
   $("#editoraLivro").text(livro.editora);
   $("#anoPublicacaoLivro").text(livro.ano_publicacao);
 } 
-
-const redirecionarParaEdicaoDoLivro = () => {
-  localStorage.setItem("codigoLivro", localStorage.getItem("codigoLivro"));
-  location.href="../edicaoLivro/edicaoLivro.html";
-}
-
-const excluirLivroPorCodigo = () => {
-  $.ajax({
-    method: "DELETE",
-    url: "http://localhost:3000/livros/".concat(localStorage.getItem("codigoLivro")),
-  }).done(function (dados) {
-    exibirMessageBox(dados, "Prosseguir", true, "../gestaoDeLivros/gestaoDeLivros.html");
-  }).fail(function (erro)  {
-    exibirMessageBox(erro.responseJSON, "Entendido", false);
-  });
-}

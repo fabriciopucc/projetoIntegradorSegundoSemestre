@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="../../../assets/css/templates.css">
     <link rel="stylesheet" href="./informacoesLivro.css">
 
-    <script src="../../../js/tema.js"></script>
     <script src="../../../js/carregarTemplates.js"></script>
     <script src="../../../js/messageBox.js"></script>
     <script src="./informacoesLivro.js"></script>
+    <script src="../../../js/tema.js"></script>
 
     <script
       src="https://code.jquery.com/jquery-3.6.1.min.js"
@@ -36,7 +36,7 @@
 
     <header class="cabecalho">
       <div class="margemCabecalho">
-        <a href="../gestaoDeLivros/gestaoDeLivros.html">
+        <a href="../livrosDisponiveis/livrosDisponiveis.html">
           <img 
             src="../../../assets/icons/reply.png" 
             class="iconCabecalho"
@@ -79,18 +79,12 @@
               <p id="anoPublicacaoLivro">xxxx</p>
 
               <div class="botoesSobreLivro">
-                <button
-                  onclick="redirecionarParaEdicaoDoLivro()"
-                >
-                  Editar
-                </button>
-
-                <button
-                  type="button"
-                  onclick="excluirLivroPorCodigo()"
-                >
-                  Excluir
-                </button>
+                <a 
+                  href="../../totem/retirarLivro/retirarLivro.html"
+                  class="linkBotaoRedirecionar"
+                  >
+                  Pegar livro emprestado
+                </a>
               </div>
           </div>
         </div>

@@ -1,4 +1,5 @@
 window.onload = () => {
+  carregarTema();
   carregarTemplates();
   buscarAlunoPorCodigo(localStorage.getItem('codigoAluno'));
 }
