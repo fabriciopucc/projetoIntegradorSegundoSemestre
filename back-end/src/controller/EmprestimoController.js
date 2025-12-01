@@ -25,6 +25,38 @@ class EmprestimoController{
     res.status(status).json(retorno);
   }
 
+  async buscarEmprestimosNaoConcluidosDeUmAluno(req, res){
+    let retorno = "Aluno inexistente!";
+    let status = 400;
+
+    const codigoAluno = req.params.codigoAluno;
+
+    const buscaAlunoPorCodigo = await AlunoRepository.buscarAlunoPeloCodigo(codigoAluno);
+
+    if(buscaAlunoPorCodigo.length){
+      retorno = await EmprestimoRepository.buscarEmprestimosNaoConlcuidosDeUmAluno(codigoAluno);
+      status = 200;
+    }
+
+    res.status(status).json(retorno);
+  }
+
+  async buscarEmprestimosConcluidosDeUmAluno(req, res){
+    let retorno = "Aluno inexistente!";
+    let status = 400;
+
+    const codigoAluno = req.params.codigoAluno;
+
+    const buscaAlunoPorCodigo = await AlunoRepository.buscarAlunoPeloCodigo(codigoAluno);
+
+    if(buscaAlunoPorCodigo.length){
+      retorno = await EmprestimoRepository.buscarEmprestimosConlcuidosDeUmAluno(codigoAluno);
+      status = 200;
+    }
+
+    res.status(status).json(retorno);
+  }
+
   async salvarEmprestimo(req, res){
     let retorno = "Aluno ou livro inexistente!"; //Mensagem padrão caso falhe o 1º IF
     let status = 400; //Status padrão caso falhe qualquer um dos IF's
@@ -73,6 +105,7 @@ class EmprestimoController{
     
     if(codigoEmprestimoNaoDevolvido.length){ //Verifica se o empretimo não devolvido realmente existe
       const codigoEmprestimo = codigoEmprestimoNaoDevolvido[0].codigo_emprestimo;
+      const dataDevolucao = devolucao.data_devolucao;
       const aluno = await AlunoRepository.buscarAlunoPeloCodigo(codigoAluno);
       const livro = await LivroRepository.buscarLivroPorCodigo(codigoLivro);
 
@@ -82,7 +115,7 @@ class EmprestimoController{
 
         await LivroRepository.atualizarQuantidadeDeExemplaresDoLivro((quantidadeExemplares + 1), codigoLivro); //Devolve 1 exemplar para o estoque
         await AlunoRepository.atualizarPontuacaoDoAluno((pontuacaoAluno + 1), codigoAluno); //Aumenta pontuação do aluno
-        await EmprestimoRepository.atualizarEmprestimoComoDevolvido(codigoEmprestimo); //Altera empréstimo para devolvido = true
+        await EmprestimoRepository.atualizarEmprestimoComoDevolvido(dataDevolucao, codigoEmprestimo); //Altera empréstimo para devolvido = true
 
         retorno = "Empréstimo devolvido com sucesso!";
         status = 200;

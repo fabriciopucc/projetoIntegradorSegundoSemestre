@@ -37,6 +37,7 @@
 .margemSobreAluno{
   width: 90%;
   display: flex;
+  flex-direction: column;
   margin: 30px 0;
 }
 
@@ -57,7 +58,8 @@
 }
 
 .pontuacao{
-  width: 35%;
+  width: 100%;
+  margin: 20px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -160,8 +162,37 @@
   100%{
       transform: scale(1.1);
       opacity: 0;
-  }
-  
+  }  
+}
+
+.livrosLidos, .cabecalhoLivrosLidos{
+  width: 100%;
+}
+
+.linha{
+  width: 100%;
+  display: flex;
+  background-color: var(--contraste);
+}
+
+.cabecalhoLivrosLidos .linha{
+  color: var(--titulos);
+  margin-bottom: 10px;
+}
+
+.cabecalhoLivrosLidos .linha div p{
+  color: var(--titulos);
+}
+
+.linha div{
+  width: 33.3%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.linha div p{
+  margin: 0 0 0 10px;
 }
 
 @media screen and (max-width: 550px) {

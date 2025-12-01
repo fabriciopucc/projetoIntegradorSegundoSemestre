@@ -10,6 +10,7 @@ const buscarAlunoPeloRA = (ra) => {
       method: "GET",
       url: "http://localhost:3000/alunos/ra/".concat(ra),
     }).done(function (dados) {
+      buscarLivrosLidos(dados[0].codigo);
       esconderCardLoader();
       carregarAluno(dados[0]);
     }).fail(function (erro)  {
@@ -40,4 +41,37 @@ const carregarAluno = (aluno) => {
                                   (aluno.pontuacao >= 11 && aluno.pontuacao <= 20) ? "leitorAtivo" :
                                   (aluno.pontuacao > 20) && "leitorExtremo"
   );
+}
+
+const buscarLivrosLidos = (codigoAluno) => {
+  $.ajax({
+    method: "GET",
+    url: "http://localhost:3000/emprestimos/concluidos/".concat(codigoAluno),
+  }).done(function (dados) {
+    carregarLivrosLidos(dados);
+  }).fail(function (erro)  {
+    exibirMessageBox(erro.responseJSON, "Entendido", false);
+  });
+}
+
+const carregarLivrosLidos = (livros) => {
+   $("#livrosLidos").empty();
+
+  livros.map((livro) => {
+    $("#livrosLidos").append(
+      '<div class="linha">'+
+        '<div>'+
+          '<p>'+livro.titulo+'</p>'+
+        '</div>'+
+
+        '<div>'+
+          '<p>'+livro.data_emprestimo.split(" ")[0]+'</p>'+
+        '</div>'+
+
+        '<div>'+
+          '<p>'+livro.data_devolucao.split(" ")[0]+'</p>'+
+        '</div>'+
+      '</div>'
+    );
+  }); 
 }

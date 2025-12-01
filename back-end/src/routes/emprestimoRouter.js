@@ -5,6 +5,8 @@ const emprestimoRouter = Router();
 
 emprestimoRouter.get("", EmprestimoController.listarEmprestimos);
 emprestimoRouter.get("/:codigoAluno", EmprestimoController.listarLivrosNaoDevolvidosDeUmAlunoPeloSeuCodigo);
+emprestimoRouter.get("/naoConcluidos/:codigoAluno", EmprestimoController.buscarEmprestimosNaoConcluidosDeUmAluno);
+emprestimoRouter.get("/concluidos/:codigoAluno", EmprestimoController.buscarEmprestimosConcluidosDeUmAluno);
 emprestimoRouter.post("", EmprestimoController.salvarEmprestimo);
 emprestimoRouter.put("", EmprestimoController.devolverEmprestimo);
 

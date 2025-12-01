@@ -61,6 +61,9 @@ const gerarSelectDeLivros = (livros) => {
 const enviarFormularioDevolverLivro = () => {
   const dataEHoraNoBrasil = new Date().toLocaleString('pt-BR', {timeZone: 'America/Sao_Paulo'}).replace(",", "");
 
+  console.log("AAAA")
+  console.log(dataEHoraNoBrasil)
+
   const devolucao = {
     fk_codigo_aluno: $("#codigoAluno").val(),
     fk_codigo_livro: $("#codigoLivro").val(), 
